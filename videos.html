@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos Explicativos — Salteñería Chikis</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <link rel="stylesheet" href="estilo.css">
+
+  <style>
+    /* ══════════════════════════════════════════
+       VIDEOS PAGE — estilos propios
+    ══════════════════════════════════════════ */
+
+    /* ── Hero banner (mismo patrón que informe.html) ── */
+    .videos-hero {
+      margin-top: 68px;
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #1e1c14 0%, var(--dark-800) 60%, #1a1a10 100%);
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .videos-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(212,163,52,0.05) 1px, transparent 1px);
+      background-size: 26px 26px;
+      pointer-events: none;
+    }
+
+    .videos-hero::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 12%; bottom: 12%;
+      width: 2px;
+      background: linear-gradient(to bottom,
+        transparent, var(--gold-400) 28%, var(--gold-400) 72%, transparent);
+    }
+
+    .videos-hero__glow {
+      position: absolute;
+      right: 0; top: -40%;
+      width: 480px; height: 480px;
+      background: radial-gradient(ellipse at center,
+        rgba(212,163,52,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .videos-hero__content {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 4rem;
+    }
+
+    .videos-hero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-bottom: 1rem;
+      padding: 4px 13px;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill);
+    }
+    .videos-hero__kicker::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--gold-400);
+      border-radius: 50%;
+    }
+
+    .videos-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .videos-hero__title em {
+      color: var(--gold-400);
+      font-style: italic;
+    }
+
+    .videos-hero__sub {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Área principal ── */
+    .videos-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* ── Eyebrow de sección ── */
+    .videos-section-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .videos-section-label {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .videos-section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    .videos-section-count {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    /* ── Grid de videos ── */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Card de video ── */
+    .video-card {
+      background: var(--dark-800);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.28s ease,
+                  border-color 0.28s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,163,52,0.5);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.5),
+                  0 0 0 1px rgba(212,163,52,0.12);
+    }
+
+    /* Cabecera de la card */
+    .video-card__head {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.75rem 1.2rem;
+      background: rgba(212,163,52,0.07);
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .video-card__num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--dark-900);
+      background: var(--gold-400);
+      padding: 2px 9px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    .video-card__badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+      opacity: 0.7;
+    }
+
+    /* Contenedor del video */
+    .video-card__player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #0a0a08;
+      overflow: hidden;
+    }
+
+    .video-card__player video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Body de la card */
+    .video-card__body {
+      padding: 1rem 1.2rem 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .video-card__title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .video-card__desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── Botón volver ── */
+    .videos-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+    }
+    .videos-back:hover {
+      color: var(--gold-400);
+      border-color: var(--border-gold);
+      background: rgba(212,163,52,0.06);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .videos-hero__content { padding: 2rem 1.5rem; }
+      .videos-page { padding: 2rem 1rem 4rem; }
+      .videos-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .videos-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVBAR (idéntica al resto del sitio)
+  ══════════════════════════════════════════ -->
+  <section id="inicio">
+    <header id="main-header">
+      <div class="contenido-header">
+
+        <div class="logo">
+          <h1>SALTEÑERÍA CHIKIS</h1>
+        </div>
+
+        <nav id="nav">
+          <ul>
+
+            <li>
+              <a href="index.html" onclick="seleccionar()">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+              </a>
+            </li>
+            <li>
+              <a href="menu.html" onclick="seleccionar()">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Menú</span>
+              </a>
+            </li>
+
+            <li class="dropdown">
+              <a href="informe.html" class="dropdown-toggle">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Informe</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="informe.html#generalidades">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>I. Generalidades</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="informe.html#marco-teorico">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Marco Teórico</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="informe.html#modelo-ambiental">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <span>Modelo Ambiental</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="informe.html#modelo-comportamiento">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <span>Modelo de Comportamiento</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="informe.html#modelo-objetos">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Modelo OO</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="videos.html" onclick="seleccionar()" class="active">
+                <i class="fa-solid fa-video"></i>
+                <span>Videos</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <div class="social">
+          <a href="tel:78073688">
+            <i class="fa-solid fa-phone"></i>
+            78073688
+          </a>
+        </div>
+
+        <div class="nav-responsive" id="bar" onclick="mostrarOcultarMenu()" aria-label="Menú">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+      </div>
+    </header>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO BANNER
+  ══════════════════════════════════════════ -->
+  <div class="videos-hero">
+    <div class="videos-hero__glow" aria-hidden="true"></div>
+    <div class="videos-hero__content">
+      <div class="videos-hero__kicker">
+        <i class="fa-solid fa-video" aria-hidden="true"></i>
+        Material audiovisual · Análisis y Diseño de Sistemas
+      </div>
+      <h1 class="videos-hero__title">
+        Explicaciones en <em>video</em>
+      </h1>
+      <p class="videos-hero__sub">
+        Presentaciones y exposiciones de los modelos del sistema integral de ventas
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ══════════════════════════════════════════ -->
+  <main class="videos-page">
+
+    <!-- Encabezado de sección -->
+    <div class="videos-section-head">
+      <span class="videos-section-label">Videos explicativos</span>
+      <div class="videos-section-line" aria-hidden="true"></div>
+      <span class="videos-section-count">4 videos · Proyecto Salteñería Chikis</span>
+    </div>
+
+    <!-- Grid de cards -->
+    <div class="videos-grid">
+
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-card__head">
+          <span class="video-card__num">01</span>
+          <span class="video-card__badge">Análisis Estructurado</span>
+        </div>
+        <div class="video-card__player">
+          <video controls preload="none">
+            <source src="videos/video1.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        </div>
+        <div class="video-card__body">
+          <div class="video-card__title">Modelo de Comportamiento</div>
+          <p class="video-card__desc">
+            Explicación de los Diagramas de Flujo de Datos (DFD) Nivel 2 y Nivel 3, subsistema tienda web y flujo de interacción del usuario.
+          </p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-card__head">
+          <span class="video-card__num">02</span>
+          <span class="video-card__badge">Modelo Ambiental</span>
+        </div>
+        <div class="video-card__player">
+          <video controls preload="none">
+            <source src="videos/video2.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        </div>
+        <div class="video-card__body">
+          <div class="video-card__title">Modelo Ambiental</div>
+          <p class="video-card__desc">
+            Explicación del DFD Nivel 0 (Diagrama de Contexto): entidades externas, fronteras del sistema y flujos de información del Sprint 0.
+          </p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-card__head">
+          <span class="video-card__num">03</span>
+          <span class="video-card__badge">Análisis OO</span>
+        </div>
+        <div class="video-card__player">
+          <video controls preload="none">
+            <source src="videos/video3.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        </div>
+        <div class="video-card__body">
+          <div class="video-card__title">Diagrama de Casos de Uso</div>
+          <p class="video-card__desc">
+            Explicación del Modelo de Casos de Uso UML: actores del sistema, relaciones de inclusión y extensión entre los 11 casos identificados.
+          </p>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video-card">
+        <div class="video-card__head">
+          <span class="video-card__num">04</span>
+          <span class="video-card__badge">Análisis OO</span>
+        </div>
+        <div class="video-card__player">
+          <video controls preload="none">
+            <source src="videos/video 4.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        </div>
+        <div class="video-card__body">
+          <div class="video-card__title">Diagrama de Clases</div>
+          <p class="video-card__desc">
+            Explicación del Diagrama de Clases UML: 8 clases de dominio, atributos, métodos y relaciones de asociación, composición y herencia.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- /videos-grid -->
+
+    <!-- Botón volver -->
+    <a href="index.html" class="videos-back">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      Volver al Inicio
+    </a>
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER COMPACTO
+  ══════════════════════════════════════════ -->
+  <footer id="contacto">
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2026 Salteñería Chikis · Material audiovisual — Sistema Integral de Ventas
+      </p>
+      <p class="footer-badge">HECHO EN BOLIVIA 🇧🇴</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

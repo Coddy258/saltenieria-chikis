@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú — Salteñería Chikis</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- estilo.css compartido — da estilos al header #inicio -->
+  <link rel="stylesheet" href="estilo.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════
+       SALTEÑERÍA CHIKIS — menu.html
+       Estilos exclusivos de esta página (catálogo + carrito)
+       El header usa estilo.css igual que el resto del sitio
+    ══════════════════════════════════════════════════════ */
+
+    :root {
+      --gold-100: #fdf3dc;
+      --gold-200: #f5d98a;
+      --gold-400: #d4a334;
+      --gold-500: #b88a26;
+      --gold-600: #8c6918;
+      --dark-900: #1a1a16;
+      --dark-800: #222219;
+      --dark-700: #2d2d22;
+      --dark-600: #3a3a2e;
+      --text-primary: #f5f0e8;
+      --text-secondary: #9c9080;
+      --text-muted: #5e5a52;
+      --border-gold: rgba(212, 163, 52, 0.18);
+      --border-subtle: rgba(245, 240, 232, 0.08);
+      --shadow-gold: 0 6px 24px rgba(212, 163, 52, 0.30);
+      --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.35);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+      --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.22s var(--ease-out);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-pill: 50px;
+      --header-h: 68px;
+      --filter-h: 54px;
+      --cart-w: 420px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-900);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-weight: 400;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+    select { font-family: var(--font-body); }
+
+    /* ─── Botón carrito (exclusivo de menu.html) ─── */
+    .mn-cart-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--gold-400);
+      color: var(--dark-900);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--gold-400);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .mn-cart-btn:hover {
+      background: transparent;
+      color: var(--gold-400);
+    }
+    .mn-cart-badge {
+      position: absolute;
+      top: -8px; right: -8px;
+      min-width: 20px; height: 20px;
+      padding: 0 5px;
+      background: #e53e3e;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+    .mn-cart-badge.visible { transform: scale(1); }
+
+    /* ─── MENU HERO BANNER ─── */
+    .menu-hero {
+      margin-top: var(--header-h);
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .menu-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 100% at 85% 50%, rgba(212,163,52,0.08) 0%, transparent 65%),
+        linear-gradient(135deg, var(--dark-800) 0%, #1e1c14 100%);
+    }
+    .menu-hero__bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(212,163,52,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .menu-hero__bg::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 15%; bottom: 15%;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--gold-400) 30%, var(--gold-400) 70%, transparent);
+    }
+    .menu-hero__content {
+      position: relative;
+      z-index: 1;
+      padding: 0 3.5rem;
+    }
+    .menu-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-bottom: 0.8rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill);
+    }
+    .menu-hero__eyebrow::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--gold-400);
+      border-radius: 50%;
+    }
+    .menu-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .menu-hero__title em { color: var(--gold-400); font-style: italic; }
+    .menu-hero__sub {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+    }
+    .menu-hero__deco {
+      position: absolute;
+      right: 3.5rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 9rem;
+      font-weight: 700;
+      color: rgba(212,163,52,0.04);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+    .menu-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-400) 30%, var(--gold-400) 70%, transparent);
+      opacity: 0.3;
+    }
+
+    /* ─── STICKY FILTER BAR ─── */
+    .filter-bar {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 800;
+      background: rgba(22, 22, 18, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .filter-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      height: var(--filter-h);
+    }
+    .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      background: transparent;
+    }
+    .filter-tab i { font-size: 0.8rem; }
+    .filter-tab:hover { color: var(--text-primary); background: rgba(245,240,232,0.04); }
+    .filter-tab.active {
+      color: var(--gold-400);
+      background: rgba(212,163,52,0.1);
+      border-color: var(--border-gold);
+    }
+    .filter-divider {
+      width: 1px; height: 18px;
+      background: var(--border-subtle);
+      margin: 0 0.5rem;
+      flex-shrink: 0;
+    }
+    .filter-count {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── CATALOG ─── */
+    .catalog-page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+    }
+    .catalog-section-head {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .catalog-section-head:first-child { margin-top: 0; }
+    .catalog-section-label {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .catalog-section-line { flex: 1; height: 1px; background: var(--border-subtle); }
+    .catalog-section-count { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.06em; white-space: nowrap; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    /* ─── PRODUCT CARD ─── */
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .product-card {
+      background: var(--dark-800);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.32s var(--ease-out), box-shadow 0.32s ease, border-color 0.32s ease;
+      animation: cardReveal 0.38s var(--ease-out) both;
+    }
+    .product-card:hover {
+      transform: translateY(-9px);
+      border-color: rgba(212,163,52,0.5);
+      box-shadow: 0 22px 52px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,163,52,0.14);
+    }
+    .pc-img {
+      position: relative;
+      height: 195px;
+      overflow: hidden;
+      background: var(--dark-700);
+      flex-shrink: 0;
+    }
+    .pc-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.58) saturate(0.75);
+      transition: transform 0.5s ease, filter 0.32s ease;
+    }
+    .product-card:hover .pc-img img { transform: scale(1.07); filter: brightness(0.72) saturate(0.95); }
+    .pc-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 35%, rgba(34,34,25,0.88) 100%);
+      pointer-events: none;
+    }
+    .pc-badge {
+      position: absolute;
+      top: 0.7rem; left: 0.7rem;
+      z-index: 1;
+      font-size: 0.57rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(212,163,52,0.15);
+      border: 1px solid rgba(212,163,52,0.35);
+      color: var(--gold-400);
+    }
+    .pc-price-tag { position: absolute; bottom: 0.7rem; right: 0.85rem; z-index: 1; }
+    .pc-price-tag .currency {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gold-500);
+      vertical-align: super;
+      margin-right: 1px;
+    }
+    .pc-price-tag .amount {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-400);
+      line-height: 1;
+    }
+    .pc-body { padding: 1.1rem 1.2rem 1.2rem; flex: 1; display: flex; flex-direction: column; }
+    .pc-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; line-height: 1.2; }
+    .pc-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; font-weight: 300; flex: 1; margin-bottom: 1rem; }
+    .pc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      padding: 0.62rem 1rem;
+      background: var(--gold-400);
+      color: var(--dark-900);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--gold-400);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .pc-btn:hover { background: transparent; color: var(--gold-400); }
+    .pc-btn:active { transform: scale(0.97); }
+
+    /* ─── CART OVERLAY ─── */
+    .cart-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(3px);
+      z-index: 950;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    /* ─── CART SIDEBAR ─── */
+    .cart-sidebar {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: var(--cart-w);
+      max-width: 100vw;
+      background: var(--dark-800);
+      border-left: 1px solid var(--border-gold);
+      z-index: 960;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(102%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.15, 1);
+      overflow: hidden;
+    }
+    .cart-sidebar.open { transform: translateX(0); }
+    .cart-head {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.15rem 1.4rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--dark-800);
+    }
+    .cart-head__left { display: flex; align-items: center; gap: 0.75rem; }
+    .cart-head__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .cart-head__title i { color: var(--gold-400); }
+    .cart-head__badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--dark-900);
+      background: var(--gold-400);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      min-width: 20px;
+      text-align: center;
+    }
+    .cart-head__actions { display: flex; align-items: center; gap: 0.5rem; }
+    .cart-clear-btn {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+    .cart-clear-btn:hover { color: #fc8181; border-color: rgba(252,129,129,0.2); }
+    .cart-close-btn {
+      width: 30px; height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(245,240,232,0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .cart-close-btn:hover { background: rgba(245,240,232,0.12); color: var(--text-primary); }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.5rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dark-600) transparent;
+    }
+    .cart-items::-webkit-scrollbar { width: 4px; }
+    .cart-items::-webkit-scrollbar-thumb { background: var(--dark-600); border-radius: 2px; }
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 1rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .cart-empty__icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(212,163,52,0.07);
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--gold-400);
+    }
+    .cart-empty__title { font-family: var(--font-display); font-size: 1rem; color: var(--text-primary); }
+    .cart-empty__sub { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.4rem;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.15s;
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item:hover { background: rgba(245,240,232,0.02); }
+    .ci-img {
+      width: 50px; height: 50px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--dark-700);
+      border: 1px solid var(--border-subtle);
+    }
+    .ci-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.68); }
+    .ci-info { flex: 1; min-width: 0; }
+    .ci-name { font-size: 0.83rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.15rem; }
+    .ci-unit { font-size: 0.7rem; color: var(--text-muted); }
+    .qty-ctrl {
+      display: flex;
+      align-items: center;
+      background: var(--dark-700);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .qty-btn {
+      width: 27px; height: 27px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .qty-btn:hover { color: var(--gold-400); background: rgba(212,163,52,0.1); }
+    .qty-num { min-width: 24px; text-align: center; font-size: 0.82rem; font-weight: 700; color: var(--text-primary); }
+    .ci-subtotal { font-family: var(--font-display); font-size: 0.92rem; font-weight: 700; color: var(--gold-400); flex-shrink: 0; min-width: 58px; text-align: right; }
+    .ci-del {
+      width: 26px; height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .ci-del:hover { color: #fc8181; background: rgba(252,129,129,0.1); }
+    .cart-foot {
+      flex-shrink: 0;
+      border-top: 1px solid var(--border-gold);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      background: var(--dark-800);
+    }
+    .sucursal-wrap { display: flex; flex-direction: column; gap: 0.38rem; }
+    .sucursal-label { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+    .sucursal-label i { color: var(--gold-400); margin-right: 4px; }
+    .sucursal-select {
+      width: 100%;
+      background: var(--dark-700);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 0.55rem 2.2rem 0.55rem 0.85rem;
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4a334'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.65rem center;
+      background-size: 18px;
+    }
+    .sucursal-select:focus { outline: none; border-color: var(--gold-400); }
+    .sucursal-select option { background: var(--dark-800); }
+    .order-summary { background: var(--dark-700); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 0.8rem 0.95rem; }
+    .sum-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.32rem; }
+    .sum-row:last-child { margin-bottom: 0; }
+    .sum-label { font-size: 0.78rem; color: var(--text-secondary); }
+    .sum-val   { font-size: 0.78rem; color: var(--text-primary); }
+    .sum-free  { font-size: 0.78rem; color: #68d391; font-weight: 600; }
+    .sum-hr { height: 1px; background: var(--border-subtle); margin: 0.4rem 0; }
+    .sum-total-label { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
+    .sum-total-val { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--gold-400); }
+    .stock-timer {
+      display: none;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.5rem 0.9rem;
+      background: rgba(212,163,52,0.07);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      font-size: 0.76rem;
+      color: var(--gold-400);
+    }
+    .stock-timer.visible { display: flex; }
+    .stock-timer.expired { background: rgba(252,129,129,0.07); border-color: rgba(252,129,129,0.25); color: #fc8181; }
+    .stock-timer__label { flex: 1; font-weight: 500; }
+    .stock-timer__count { font-weight: 800; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+    .stock-renew {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gold-400); cursor: pointer; padding: 2px 7px;
+      border: 1px solid var(--border-gold); border-radius: var(--radius-pill);
+      transition: var(--transition); display: none;
+    }
+    .stock-timer.expired .stock-renew { display: inline-flex; }
+    .stock-renew:hover { background: rgba(212,163,52,0.1); }
+    .cart-actions { display: flex; flex-direction: column; gap: 0.55rem; }
+    .btn-pdf {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      width: 100%; padding: 0.65rem 1rem;
+      background: transparent; color: var(--gold-400);
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em;
+      border: 1.5px solid rgba(212,163,52,0.55); border-radius: var(--radius-pill);
+      cursor: pointer; transition: var(--transition);
+    }
+    .btn-pdf:hover { background: rgba(212,163,52,0.1); border-color: var(--gold-400); }
+    .btn-wsp {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      width: 100%; padding: 0.7rem 1rem;
+      background: #25D366; color: #fff;
+      font-size: 0.82rem; font-weight: 700;
+      border-radius: var(--radius-pill); cursor: pointer; transition: var(--transition);
+    }
+    .btn-wsp:hover { background: #1db857; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.32); }
+    .btn-wsp:active { transform: translateY(0); }
+    .btn-pdf:disabled, .btn-wsp:disabled { opacity: 0.38; pointer-events: none; }
+
+    /* ─── TOAST ─── */
+    .toast-wrap {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 1100; display: flex; flex-direction: column; align-items: center;
+      gap: 0.4rem; pointer-events: none;
+    }
+    @keyframes toastIn  { from { opacity:0; transform:translateY(10px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
+    @keyframes toastOut { to { opacity:0; transform:translateY(-8px) scale(0.95); } }
+    .toast {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--dark-700); border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill); padding: 0.55rem 1.1rem;
+      font-size: 0.8rem; color: var(--text-primary); white-space: nowrap;
+      box-shadow: var(--shadow-card);
+      animation: toastIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both, toastOut 0.3s ease 2.1s both;
+    }
+    .toast i { color: var(--gold-400); font-size: 0.85rem; }
+    .toast strong { color: var(--gold-200); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      :root { --cart-w: 380px; }
+    }
+    @media (max-width: 768px) {
+      .catalog-page { padding: 1.5rem 1rem 4rem; }
+      .menu-hero { height: 175px; }
+      .menu-hero__content { padding: 0 1.5rem; }
+      .menu-hero__deco { display: none; }
+      .filter-bar__inner { padding: 0 1rem; }
+      .products-grid { grid-template-columns: 1fr; }
+      .catalog-section-label { font-size: 1.15rem; }
+      :root { --cart-w: 100vw; }
+    }
+    @media (max-width: 480px) {
+      .mn-cart-btn span:not([class]) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAVBAR — misma estructura que todo el sitio
+  ══════════════════════════════════ -->
+  <section id="inicio">
+    <header id="main-header">
+      <div class="contenido-header">
+
+        <div class="logo">
+          <h1>SALTEÑERÍA CHIKIS</h1>
+        </div>
+
+        <nav id="nav">
+          <ul>
+            <li>
+              <a href="index.html" onclick="seleccionar()">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+              </a>
+            </li>
+            <li>
+              <a href="menu.html" onclick="seleccionar()" class="active">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Menú</span>
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="informe.html" class="dropdown-toggle">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Informe</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="informe.html#generalidades"><i class="fa-solid fa-circle-info"></i><span>I. Generalidades</span></a></li>
+                <li><a href="informe.html#marco-teorico"><i class="fa-solid fa-flask"></i><span>Marco Teórico</span></a></li>
+                <li><a href="informe.html#modelo-ambiental"><i class="fa-solid fa-earth-americas"></i><span>Modelo Ambiental</span></a></li>
+                <li><a href="informe.html#modelo-comportamiento"><i class="fa-solid fa-sitemap"></i><span>Modelo de Comportamiento</span></a></li>
+                <li><a href="informe.html#modelo-objetos"><i class="fa-solid fa-diagram-project"></i><span>Modelo OO</span></a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="videos.html" onclick="seleccionar()">
+                <i class="fa-solid fa-video"></i>
+                <span>Videos</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Botón carrito donde va .social en el resto del sitio -->
+        <div class="social">
+          <button class="mn-cart-btn" id="cartToggleBtn"
+                  aria-label="Abrir carrito" aria-expanded="false"
+                  aria-controls="cartSidebar">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <span>Mi Pedido</span>
+            <span class="mn-cart-badge" id="cartBadge" aria-live="polite" aria-atomic="true">0</span>
+          </button>
+        </div>
+
+        <div class="nav-responsive" id="bar" onclick="mostrarOcultarMenu()" aria-label="Menú">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+      </div>
+    </header>
+  </section>
+
+  <!-- ══════════════════════════════════
+       HERO BANNER
+  ══════════════════════════════════ -->
+  <section class="menu-hero" aria-label="Encabezado del catálogo">
+    <div class="menu-hero__bg" aria-hidden="true"></div>
+    <div class="menu-hero__content">
+      <div class="menu-hero__eyebrow">Catálogo · Temporada 2025</div>
+      <h1 class="menu-hero__title">Nuestro <em>Menú</em></h1>
+      <p class="menu-hero__sub">Masa artesanal&thinsp;·&thinsp;Ingredientes frescos&thinsp;·&thinsp;La Paz, Bolivia</p>
+    </div>
+    <div class="menu-hero__deco" aria-hidden="true">✦</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       STICKY FILTER BAR
+  ══════════════════════════════════ -->
+  <div class="filter-bar" role="navigation" aria-label="Filtrar productos">
+    <div class="filter-bar__inner">
+      <button class="filter-tab active" data-filter="all" aria-pressed="true">
+        <i class="fa-solid fa-border-all"></i> Todos
+      </button>
+      <div class="filter-divider" aria-hidden="true"></div>
+      <button class="filter-tab" data-filter="saltena" aria-pressed="false">
+        <i class="fa-solid fa-bread-slice"></i> Salteñas
+      </button>
+      <button class="filter-tab" data-filter="bebida" aria-pressed="false">
+        <i class="fa-solid fa-bottle-water"></i> Bebidas
+      </button>
+      <span class="filter-count" id="filterCount" aria-live="polite">10 productos</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PRODUCT CATALOG
+  ══════════════════════════════════ -->
+  <main class="catalog-page" id="catalogPage">
+    <div class="catalog-section-head" id="sec-saltena">
+      <span class="catalog-section-label">Salteñas Artesanales</span>
+      <div class="catalog-section-line" aria-hidden="true"></div>
+      <span class="catalog-section-count">5 variedades · Bs.&nbsp;8.00 c/u</span>
+    </div>
+    <div class="products-grid" id="saltenas-grid" aria-label="Catálogo de salteñas"></div>
+
+    <div class="catalog-section-head" id="sec-bebida" style="margin-top:3rem;">
+      <span class="catalog-section-label">Bebidas &amp; Refrescos</span>
+      <div class="catalog-section-line" aria-hidden="true"></div>
+      <span class="catalog-section-count">5 opciones</span>
+    </div>
+    <div class="products-grid" id="bebidas-grid" aria-label="Catálogo de bebidas"></div>
+  </main>
+
+  <!-- ══════════════════════════════════
+       CART OVERLAY + SIDEBAR
+  ══════════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+  <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-label="Carrito de pedido" aria-hidden="true">
+    <div class="cart-head">
+      <div class="cart-head__left">
+        <div class="cart-head__title">
+          <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+          Mi Pedido
+        </div>
+        <span class="cart-head__badge" id="cartHeadBadge" aria-live="polite">0</span>
+      </div>
+      <div class="cart-head__actions">
+        <button class="cart-clear-btn" id="cartClearBtn" aria-label="Vaciar carrito">Vaciar</button>
+        <button class="cart-close-btn" id="cartCloseBtn" aria-label="Cerrar carrito">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="cart-items" id="cartItemsContainer" role="list" aria-label="Productos en el pedido"></div>
+
+    <div class="cart-foot">
+      <div class="sucursal-wrap">
+        <label class="sucursal-label" for="sucursalSelect">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          Sucursal de recogida
+        </label>
+        <select class="sucursal-select" id="sucursalSelect" aria-label="Seleccionar sucursal">
+          <option value="">— Selecciona tu sucursal —</option>
+          <option value="Central – Calle Colón N.° 463">Sucursal Central — Calle Colón N.° 463</option>
+          <option value="Calacoto – Calle 23 N.° 7727">Sucursal Calacoto — Calle 23 N.° 7727</option>
+          <option value="Landaeta – Av. Landaeta N.° 1041">Sucursal Landaeta — Av. Landaeta N.° 1041</option>
+        </select>
+      </div>
+
+      <div class="order-summary" role="region" aria-label="Resumen del pedido">
+        <div class="sum-row"><span class="sum-label">Subtotal</span><span class="sum-val" id="summarySubtotal">Bs. 0.00</span></div>
+        <div class="sum-row"><span class="sum-label">Recojo en sucursal</span><span class="sum-free">Gratis</span></div>
+        <div class="sum-hr" aria-hidden="true"></div>
+        <div class="sum-row"><span class="sum-total-label">Total</span><span class="sum-total-val" id="summaryTotal">Bs. 0.00</span></div>
+      </div>
+
+      <div class="stock-timer" id="stockTimer" role="status" aria-live="polite">
+        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+        <span class="stock-timer__label" id="stockTimerLabel">Stock reservado por:</span>
+        <span class="stock-timer__count" id="stockTimerDisplay">10:00</span>
+        <button class="stock-renew" id="stockRenewBtn" aria-label="Renovar reserva">Renovar</button>
+      </div>
+
+      <div class="cart-actions">
+        <button class="btn-pdf" id="btnPDF" disabled aria-label="Generar boleta digital en PDF">
+          <i class="fa-solid fa-file-invoice" aria-hidden="true"></i>
+          Generar Boleta Digital
+        </button>
+        <button class="btn-wsp" id="btnWhatsApp" disabled aria-label="Confirmar pedido por WhatsApp">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          Confirmar por WhatsApp
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast-wrap" id="toastContainer" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- ══════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════ -->
+  <script>
+  'use strict';
+
+  const PRODUCTS = [
+    { id:'pizza',     category:'saltena', name:'Salteña de Pizza',   desc:'Queso fundido, jamón artesanal y especias mediterráneas envueltos en nuestra masa dorada horneada a punto.',                                        price:8.00, img:'img/foto1.png', alt:'Salteña de Pizza Chikis' },
+    { id:'picante',   category:'saltena', name:'Salteña Picante',    desc:'Tradicional paceña con carne de res jugosa, papa criolla, cebolla y el ají que enamora los paladares bolivianos.',                                  price:8.00, img:'img/foto2.png', alt:'Salteña Picante Chikis' },
+    { id:'fricase',   category:'saltena', name:'Salteña Fricase',    desc:'El sabor auténtico del fricase paceño — cerdo tierno, chuño y ají amarillo — encerrado en masa artesanal dorada.',                                  price:8.00, img:'img/foto3.png', alt:'Salteña Fricase Chikis' },
+    { id:'dulce',     category:'saltena', name:'Salteña Dulce',      desc:'Una variante única para los amantes de lo dulce. Masa suave de corte especial con un delicado toque azucarado.',                                    price:8.00, img:'img/foto4.png', alt:'Salteña Dulce Chikis' },
+    { id:'mixta',     category:'saltena', name:'Salteña Mixta',      desc:'La fusión perfecta de sabores tradicionales en una sola salteña. La preferida de quienes quieren probarlo todo.',                                   price:8.00, img:'img/foto5.png', alt:'Salteña Mixta Chikis' },
+    { id:'coca-cola', category:'bebida',  name:'Coca Cola',          desc:'El clásico acompañante de toda salteña. Gaseosa refrescante en presentación 350 ml bien fría.',                                                     price:3.00, img:'img/sabor7.png',  alt:'Coca Cola 350ml' },
+    { id:'fanta',     category:'bebida',  name:'Fanta',              desc:'Gaseosa de naranja burbujeante y dulce. 350 ml perfectos para equilibrar los sabores salados.',                                                     price:3.00, img:'img/sabor8.jpg',  alt:'Fanta 350ml' },
+    { id:'sprite',    category:'bebida',  name:'Sprite',             desc:'Lima y limón en estado puro. Refresco cristalino 350 ml que refresca desde el primer sorbo.',                                                       price:3.00, img:'img/sabor9.jpg',  alt:'Sprite 350ml' },
+    { id:'aquarius',  category:'bebida',  name:'Aquarius',           desc:'Bebida hidratante con sabor natural en presentación 300 ml. Ligera y perfecta para cualquier momento.',                                             price:4.00, img:'img/sabor10.jpg', alt:'Aquarius 300ml' },
+    { id:'hervido',   category:'bebida',  name:'Hervido',            desc:'Refresco natural boliviano 350 ml. Preparado con frutas de temporada y especias. Tradición paceña en cada sorbo.',                                  price:5.00, img:'img/sabor11.jpg', alt:'Hervido Natural 350ml' }
+  ];
+
+  const CART_KEY       = 'chikis_cart_v3';
+  const PHONE_WA       = '59178073688';
+  const TIMER_DURATION = 10 * 60;
+
+  let cart        = hydrate();
+  let timerID     = null;
+  let timerSec    = 0;
+  let timerActive = false;
+
+  function hydrate() { try { const r = localStorage.getItem(CART_KEY); return r ? JSON.parse(r) : {}; } catch { return {}; } }
+  function persist()  { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch {} }
+
+  function addItem(id) {
+    const p = PRODUCTS.find(p => p.id === id);
+    if (!p) return;
+    cart[id] ? cart[id].qty++ : (cart[id] = { ...p, qty: 1 });
+    persist(); refresh(); showToast(p.name);
+  }
+  function removeItem(id) { delete cart[id]; persist(); refresh(); if (!Object.keys(cart).length) stopTimer(); }
+  function changeQty(id, d) { if (!cart[id]) return; const n = cart[id].qty + d; n < 1 ? removeItem(id) : (cart[id].qty = n, persist(), refresh()); }
+  function clearCart() { if (!Object.keys(cart).length || !confirm('¿Vaciar el carrito?')) return; cart = {}; persist(); refresh(); stopTimer(); }
+  function totals() { const v = Object.values(cart); return { qty: v.reduce((s,i)=>s+i.qty,0), price: v.reduce((s,i)=>s+(i.price*i.qty),0) }; }
+
+  function refresh() { renderCartItems(); renderSummary(); updateBadge(); updateCheckoutState(); }
+
+  function renderCartItems() {
+    const c = document.getElementById('cartItemsContainer');
+    const items = Object.values(cart);
+    if (!items.length) {
+      c.innerHTML = `<div class="cart-empty"><div class="cart-empty__icon"><i class="fa-solid fa-basket-shopping"></i></div><div class="cart-empty__title">Tu pedido está vacío</div><p class="cart-empty__sub">Elige tus salteñas favoritas<br>desde el catálogo</p></div>`;
+      return;
+    }
+    c.innerHTML = items.map(i => `
+      <div class="cart-item" role="listitem">
+        <div class="ci-img"><img src="${i.img}" alt="${i.alt}" loading="lazy"></div>
+        <div class="ci-info"><div class="ci-name">${i.name}</div><div class="ci-unit">Bs. ${i.price.toFixed(2)} / u.</div></div>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty('${i.id}',-1)"><i class="fa-solid fa-minus"></i></button>
+          <span class="qty-num">${i.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${i.id}',1)"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="ci-subtotal">Bs.&nbsp;${(i.price*i.qty).toFixed(2)}</div>
+        <button class="ci-del" onclick="removeItem('${i.id}')"><i class="fa-solid fa-trash-can"></i></button>
+      </div>`).join('');
+  }
+
+  function renderSummary() {
+    const { qty, price } = totals();
+    document.getElementById('summarySubtotal').textContent = `Bs. ${price.toFixed(2)}`;
+    document.getElementById('summaryTotal').textContent    = `Bs. ${price.toFixed(2)}`;
+    document.getElementById('cartHeadBadge').textContent   = qty;
+  }
+
+  function updateBadge() {
+    const { qty } = totals();
+    const b = document.getElementById('cartBadge');
+    b.textContent = qty;
+    b.classList.toggle('visible', qty > 0);
+  }
+
+  function updateCheckoutState() {
+    const has = Object.keys(cart).length > 0;
+    document.getElementById('btnPDF').disabled      = !has;
+    document.getElementById('btnWhatsApp').disabled = !has;
+    document.getElementById('cartClearBtn').style.visibility = has ? 'visible' : 'hidden';
+  }
+
+  function renderProducts(filter = 'all') {
+    const saltGrid = document.getElementById('saltenas-grid');
+    const bebGrid  = document.getElementById('bebidas-grid');
+    const saltSec  = document.getElementById('sec-saltena');
+    const bebSec   = document.getElementById('sec-bebida');
+    const salts = PRODUCTS.filter(p => p.category === 'saltena');
+    const bebs  = PRODUCTS.filter(p => p.category === 'bebida');
+    const showS = filter === 'all' || filter === 'saltena';
+    const showB = filter === 'all' || filter === 'bebida';
+    saltSec.style.display  = showS ? '' : 'none';
+    bebSec.style.display   = showB ? '' : 'none';
+    saltGrid.style.display = showS ? '' : 'none';
+    bebGrid.style.display  = showB ? '' : 'none';
+    saltGrid.innerHTML = showS ? salts.map(buildCard).join('') : '';
+    bebGrid.innerHTML  = showB ? bebs.map(buildCard).join('') : '';
+    document.querySelectorAll('.product-card').forEach((c,i) => c.style.animationDelay = `${i*0.055}s`);
+    const count = (showS ? salts.length : 0) + (showB ? bebs.length : 0);
+    document.getElementById('filterCount').textContent = `${count} producto${count!==1?'s':''}`;
+  }
+
+  function buildCard(p) {
+    return `<article class="product-card" data-id="${p.id}">
+      <div class="pc-img">
+        <img src="${p.img}" alt="${p.alt}" loading="lazy">
+        <div class="pc-badge">${p.category==='saltena'?'Salteña':'Bebida'}</div>
+        <div class="pc-price-tag"><span class="currency">Bs.</span><span class="amount">${p.price.toFixed(2)}</span></div>
+      </div>
+      <div class="pc-body">
+        <h2 class="pc-name">${p.name}</h2>
+        <p class="pc-desc">${p.desc}</p>
+        <button class="pc-btn" onclick="addItem('${p.id}')"><i class="fa-solid fa-cart-plus"></i> Agregar al Pedido</button>
+      </div>
+    </article>`;
+  }
+
+  function initFilters() {
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.filter-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed','false'); });
+        this.classList.add('active'); this.setAttribute('aria-pressed','true');
+        renderProducts(this.dataset.filter);
+      });
+    });
+  }
+
+  function openCart()  { document.getElementById('cartSidebar').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartSidebar').setAttribute('aria-hidden','false'); document.getElementById('cartToggleBtn').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeCart() { document.getElementById('cartSidebar').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartSidebar').setAttribute('aria-hidden','true'); document.getElementById('cartToggleBtn').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+  function showToast(name) {
+    const w = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<i class="fa-solid fa-circle-check"></i><strong>${name}</strong>&ensp;añadida al pedido`;
+    w.appendChild(t);
+    setTimeout(() => t.remove(), 2700);
+  }
+
+  function startTimer() {
+    if (timerActive) return;
+    timerActive = true; timerSec = TIMER_DURATION;
+    const el = document.getElementById('stockTimer');
+    const disp = document.getElementById('stockTimerDisplay');
+    const lbl  = document.getElementById('stockTimerLabel');
+    const ren  = document.getElementById('stockRenewBtn');
+    el.classList.add('visible'); el.classList.remove('expired');
+    lbl.textContent = 'Stock reservado por:'; ren.style.display = 'none';
+    disp.textContent = formatTimer(timerSec);
+    timerID = setInterval(() => {
+      timerSec--;
+      disp.textContent = formatTimer(timerSec);
+      if (timerSec <= 0) {
+        clearInterval(timerID); timerActive = false;
+        el.classList.add('expired');
+        lbl.textContent = '⚠ Reserva expirada. Renueva antes de confirmar.';
+        disp.textContent = '--:--'; ren.style.display = 'inline-flex';
+        document.getElementById('btnWhatsApp').disabled = true;
+      }
+    }, 1000);
+  }
+
+  function stopTimer() { if (timerID) { clearInterval(timerID); timerID = null; } timerActive = false; document.getElementById('stockTimer').classList.remove('visible','expired'); }
+  function renewTimer() { stopTimer(); startTimer(); updateCheckoutState(); showToast('Reserva de stock renovada — 10 min'); }
+  function formatTimer(s) { return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; }
+
+  function generatePDF() {
+    const { jsPDF } = window.jspdf || {};
+    if (!jsPDF) { alert('Error: librería PDF no disponible.'); return; }
+    const items = Object.values(cart);
+    const sucursal = document.getElementById('sucursalSelect').value || 'No especificada';
+    const { price } = totals();
+    const orderID = 'CHK-' + Date.now().toString().slice(-7);
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('es-BO', { year:'numeric', month:'long', day:'numeric' });
+    const timeStr = now.toLocaleTimeString('es-BO', { hour:'2-digit', minute:'2-digit' });
+    const doc = new jsPDF({ unit:'mm', format:'a4' });
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
+    doc.setFillColor(212,163,52); doc.rect(0,0,pageW,40,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(22); doc.setTextColor(26,26,22);
+    doc.text('SALTEÑERÍA CHIKIS', pageW/2, 16, { align:'center' });
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(60,55,30);
+    doc.text('La Paz, Bolivia · Tradición artesanal desde la masa', pageW/2, 24, { align:'center' });
+    doc.text('Teléfono: 78073688  |  Lun–Dom, 3 sucursales', pageW/2, 30, { align:'center' });
+    doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(26,26,22);
+    doc.text('BOLETA DIGITAL DE PEDIDO', pageW/2, 52, { align:'center' });
+    doc.setDrawColor(212,163,52); doc.setLineWidth(0.4); doc.line(20,55,pageW-20,55);
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(70,65,55);
+    doc.text(`Pedido N.°:  ${orderID}`,20,64); doc.text(`Fecha:         ${dateStr}`,20,71);
+    doc.text(`Hora:           ${timeStr}`,20,78); doc.text(`Sucursal:     ${sucursal}`,20,85);
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(160,138,60);
+    doc.text('★ Reserva de stock válida por 10 minutos desde la generación de esta boleta',20,92);
+    doc.autoTable({
+      startY:100,
+      head:[['Producto','Categoría','P. Unitario','Cant.','Subtotal']],
+      body: items.map(i => [i.name, i.category==='saltena'?'Salteña':'Bebida', `Bs. ${i.price.toFixed(2)}`, `×${i.qty}`, `Bs. ${(i.price*i.qty).toFixed(2)}`]),
+      theme:'grid',
+      headStyles:{ fillColor:[212,163,52], textColor:[26,26,22], fontStyle:'bold', fontSize:9, cellPadding:3.5, halign:'center' },
+      bodyStyles:{ fontSize:9, textColor:[50,46,38], cellPadding:3 },
+      alternateRowStyles:{ fillColor:[250,247,238] },
+      columnStyles:{ 0:{cellWidth:65,fontStyle:'bold'}, 1:{cellWidth:28,halign:'center'}, 2:{cellWidth:32,halign:'center'}, 3:{cellWidth:18,halign:'center'}, 4:{halign:'right',fontStyle:'bold'} },
+      margin:{ left:20, right:20 }
+    });
+    const afterY = doc.lastAutoTable.finalY + 8;
+    const boxX=pageW-82, boxW=62, boxH=18;
+    doc.setFillColor(249,244,230); doc.roundedRect(boxX,afterY,boxW,boxH,2.5,2.5,'F');
+    doc.setDrawColor(212,163,52); doc.setLineWidth(0.5); doc.roundedRect(boxX,afterY,boxW,boxH,2.5,2.5,'S');
+    doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.setTextColor(26,26,22);
+    doc.text('TOTAL:',boxX+4,afterY+7);
+    doc.setFontSize(13); doc.setTextColor(180,138,38);
+    doc.text(`Bs. ${price.toFixed(2)}`,boxX+boxW-4,afterY+13,{align:'right'});
+    const notesY = afterY+30;
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(130,118,100);
+    ['• Este documento es un comprobante de pedido. El pago se realiza en la sucursal al momento del recojo.',
+     '• Presenta esta boleta (impresa o digital) en la sucursal seleccionada para agilizar tu atención.',
+     '• La reserva de stock caduca a los 10 minutos. Confirma por WhatsApp para garantizar disponibilidad.',
+     '• Precios en Bolivianos (Bs.). Vigentes al momento de la emisión.'
+    ].forEach((n,i) => doc.text(n,20,notesY+i*5.5));
+    doc.setFillColor(212,163,52); doc.rect(0,pageH-14,pageW,14,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.setTextColor(26,26,22);
+    doc.text('¡Gracias por tu pedido! · SALTEÑERÍA CHIKIS · La Paz, Bolivia 🇧🇴',pageW/2,pageH-5,{align:'center'});
+    doc.save(`boleta-chikis-${orderID}.pdf`);
+    startTimer(); showToast('Boleta generada — confirma por WhatsApp');
+  }
+
+  function sendWhatsApp() {
+    const items = Object.values(cart);
+    if (!items.length) return;
+    const sucursal = document.getElementById('sucursalSelect').value || 'No especificada';
+    const { price } = totals();
+    const now = new Date();
+    let msg = `🥟 *PEDIDO — SALTEÑERÍA CHIKIS*\n📅 ${now.toLocaleDateString('es-BO')}  🕐 ${now.toLocaleTimeString('es-BO',{hour:'2-digit',minute:'2-digit'})}\n\n*Detalle del pedido:*\n`;
+    items.forEach(i => { msg += `• ${i.name}  ×${i.qty}  =  Bs. ${(i.price*i.qty).toFixed(2)}\n`; });
+    msg += `\n💰 *Total: Bs. ${price.toFixed(2)}*\n📍 *Sucursal: ${sucursal}*\n\n_Pedido realizado desde la web Chikis. Adjunto boleta digital._`;
+    window.open(`https://wa.me/${PHONE_WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+    startTimer();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts('all');
+    initFilters();
+    refresh();
+
+    /* scroll shadow en el header compartido */
+    const header = document.getElementById('main-header');
+    if (header) window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30), { passive:true });
+
+    document.getElementById('cartToggleBtn').addEventListener('click', openCart);
+    document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+    document.getElementById('cartOverlay').addEventListener('click', closeCart);
+    document.getElementById('cartClearBtn').addEventListener('click', clearCart);
+    document.getElementById('btnPDF').addEventListener('click', () => { if (Object.keys(cart).length) generatePDF(); });
+    document.getElementById('btnWhatsApp').addEventListener('click', () => { if (Object.keys(cart).length) sendWhatsApp(); });
+    document.getElementById('stockRenewBtn').addEventListener('click', renewTimer);
+    document.addEventListener('keydown', e => { if (e.key==='Escape') closeCart(); });
+  });
+  </script>
+
+  <!-- script.js para mostrarOcultarMenu y seleccionar -->
+  <script src="script.js"></script>
+
+</body>
+</html>
