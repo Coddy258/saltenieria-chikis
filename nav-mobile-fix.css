@@ -1,0 +1,104 @@
+/* =====================================================
+   SALTEÑERÍA CHIKIS — Parche: Menú móvil
+   Incluir DESPUÉS de estilo.css en todos los .html:
+     <link rel="stylesheet" href="nav-mobile-fix.css">
+   ===================================================== */
+
+/* ── CAUSA DEL BUG ──────────────────────────────────────
+   El header tiene backdrop-filter: blur(16px).
+   En Safari/iOS (y algunos Chromium), backdrop-filter en un
+   elemento ancestro crea un nuevo "containing block" para
+   sus hijos con position:fixed.
+
+   El nav mobile tiene:
+     position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+
+   Al quedar contenido dentro del header (68px de alto):
+     top: 68px  →  más abajo que el header → fuera de rango
+     bottom: 0  →  borde inferior del header
+
+   Resultado: el nav queda como flex-item dentro de
+   .contenido-header (display:flex), con ~68px de alto,
+   mostrando solo "Inicio" y obligando a hacer scroll.
+
+   FIX: Eliminamos backdrop-filter del header en mobile y
+   usamos fondo sólido. El nav vuelve a posicionarse
+   correctamente respecto al viewport.
+───────────────────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+
+  /* ── 1. Quitar backdrop-filter del header ── */
+  #inicio header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(26, 26, 22, 0.97) !important;
+  }
+
+  #inicio header.scrolled {
+    background: rgba(26, 26, 22, 0.99) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  /* ── 2. Asegurar que el nav overlay ocupa toda la pantalla ── */
+  #inicio header nav.responsive {
+    display: block !important;
+    position: fixed !important;
+    top: 68px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    z-index: 8999 !important;
+  }
+
+  /* ── 3. Mejorar la UX del panel: animar la apertura ── */
+  #inicio header nav {
+    transition: opacity 0.22s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+
+  #inicio header nav.responsive {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  /* ── 4. Dar más espacio al dropdown de "Informe" en mobile ── */
+  #inicio header nav .dropdown-menu {
+    position: static !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 163, 52, 0.14);
+    border-radius: 10px;
+    margin: 0.25rem 0 0.25rem 1.5rem;
+    padding: 4px;
+    min-width: unset;
+    width: calc(100% - 1.5rem);
+    box-shadow: none;
+    display: none; /* Se muestra solo al hacer clic — ver JS abajo */
+  }
+
+  /* Mostrar el dropdown-menu cuando el li.dropdown tiene clase open */
+  #inicio header nav .dropdown.open .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #inicio header nav .dropdown-menu li a {
+    border-bottom: none !important;
+    border-radius: 8px !important;
+    padding: 0.55rem 0.85rem !important;
+  }
+
+  /* Flecha del dropdown — rotar al abrir */
+  #inicio header nav .dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+}
