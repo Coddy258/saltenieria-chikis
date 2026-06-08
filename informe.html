@@ -4,74 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Informe Técnico — Sistema Integral Salteñería Chikis</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-
-  <!-- Global stylesheet (shared with index.html and menu.html) -->
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════
-       BARRA DE PROGRESO DE LECTURA
-  ════════════════════════════════════════════════ -->
   <div class="doc-progress-bar" id="docProgressBar" role="progressbar"
        aria-label="Progreso de lectura" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
     <div class="doc-progress-bar__fill" id="docProgressFill"></div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════════
-       NAVBAR HÍBRIDA GLOBAL — FASE 4
-       Copiar este bloque a index.html y menu.html
-  ════════════════════════════════════════════════ -->
   <section id="inicio">
     <header id="main-header">
       <div class="contenido-header">
-
-        <!-- Logo -->
         <div class="logo">
           <h1>SALTEÑERÍA CHIKIS</h1>
         </div>
-
-        <!-- Navegación híbrida: comercial + técnica -->
-        <!--
-  ════════════════════════════════════════════════════════
-  INSTRUCCIÓN: En informe.html, busca el bloque completo:
-    <nav id="nav">
-      <ul>
-        ...todo el contenido...
-      </ul>
-    </nav>
-  Y reemplázalo por este bloque:
-  ════════════════════════════════════════════════════════
--->
-
         <nav id="nav">
           <ul>
-
             <li>
               <a href="index.html">
                 <i class="fa-solid fa-house"></i>
                 <span>Inicio</span>
               </a>
             </li>
-
             <li>
               <a href="menu.html">
                 <i class="fa-solid fa-utensils"></i>
                 <span>Menú</span>
               </a>
             </li>
-
             <li class="dropdown">
               <a href="informe.html" class="dropdown-toggle active">
                 <i class="fa-solid fa-book-open"></i>
@@ -111,52 +78,40 @@
                 </li>
               </ul>
             </li>
-
             <li>
               <a href="videos.html">
                 <i class="fa-solid fa-video"></i>
                 <span>Videos</span>
               </a>
             </li>
-
           </ul>
         </nav>
-
-        <!-- CTA teléfono -->
         <div class="social">
           <a href="tel:78073688">
             <i class="fa-solid fa-phone"></i>
             78073688
           </a>
         </div>
-
-        <!-- Botón hamburguesa -->
         <div class="nav-responsive" id="bar" onclick="mostrarOcultarMenu()" aria-label="Menú">
           <i class="fa-solid fa-bars"></i>
         </div>
-
       </div>
     </header>
   </section>
-  <!-- /navbar -->
 
-
-  <!-- ═══════════════════════════════════════════════
-       HERO BANNER DEL INFORME
-  ════════════════════════════════════════════════ -->
   <div class="informe-hero">
     <div class="informe-hero__glow" aria-hidden="true"></div>
     <div class="informe-hero__content">
       <div class="informe-hero__kicker">
         <i class="fa-solid fa-book-open" aria-hidden="true"></i>
-        Documento Académico · UMSA · Ingeniería de Software
+        Documento Académico · UMSA · Informática · 2026
       </div>
       <h1 class="informe-hero__title">
         Sistema de Información Integral para la<br>
         <em>Gestión Comercial</em> de Salteñería Chikis
       </h1>
       <p class="informe-hero__sub">
-        Análisis y Diseño de Sistemas · Paradigma Estructurado & Orientado a Objetos · SCRUM
+        Análisis y Diseño de Sistemas · Paradigma Estructurado &amp; Orientado a Objetos · SCRUM
       </p>
       <div class="informe-hero__meta">
         <span class="informe-meta-pill">
@@ -175,18 +130,11 @@
     </div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════════
-       LAYOUT PRINCIPAL: SIDEBAR + CONTENIDO
-  ════════════════════════════════════════════════ -->
   <div class="doc-layout">
 
-    <!-- ───────────────────────────────────────────
-         SIDEBAR — Tabla de contenidos sticky
-    ─────────────────────────────────────────── -->
+    <!-- ── SIDEBAR ── -->
     <aside class="doc-sidebar" id="docSidebar" aria-label="Tabla de contenidos">
 
-      <!-- Toggle móvil -->
       <button class="doc-sidebar__mobile-toggle" id="sidebarToggle" aria-expanded="true"
               aria-controls="docSidebar">
         <span><i class="fa-solid fa-list-ul" style="color:var(--gold-400);margin-right:6px"></i>Tabla de contenidos</span>
@@ -202,7 +150,7 @@
       <div class="doc-toc-chapter toc-open" id="toc-ch1">
         <a href="#generalidades" class="toc-active">
           <span class="toc-num">I</span>
-          Generalidades y Marco Teórico
+          Generalidades
         </a>
         <ul class="doc-toc-section">
           <li><a href="#introduccion">1. Introducción</a></li>
@@ -218,14 +166,14 @@
 
       <!-- Cap II -->
       <div class="doc-toc-chapter" id="toc-ch2">
-        <a href="#modelo-ambiental">
+        <a href="#marco-teorico">
           <span class="toc-num">II</span>
           Análisis Estructurado · SCRUM
         </a>
         <ul class="doc-toc-section">
           <li><a href="#modelo-ambiental">Sprint 0: Modelo Ambiental</a></li>
           <li><a href="#modelo-comportamiento">Sprint 1–2: Comportamiento</a></li>
-          <li><a href="#marco-teorico">Sprint 3: Interacción Final</a></li>
+          <li><a href="#sprint3-interaccion">Sprint 3: Interacción Final</a></li>
         </ul>
       </div>
 
@@ -251,12 +199,8 @@
 
     </aside>
 
-
-    <!-- ───────────────────────────────────────────
-         ÁREA DE CONTENIDO
-    ─────────────────────────────────────────── -->
+    <!-- ── CONTENIDO ── -->
     <main class="doc-content" id="docContent">
-
 
       <!-- ══════════════════════════════════════════
            CAPÍTULO I — GENERALIDADES
@@ -277,7 +221,6 @@
 
         <div class="doc-body">
 
-          <!-- ── 1. INTRODUCCIÓN ── -->
           <h3 class="doc-h2" id="introduccion">
             <span class="doc-num">1</span>
             Introducción
@@ -299,8 +242,6 @@
 
           <p>El documento se organiza en tres capítulos principales: el Capítulo I desarrolla las generalidades del proyecto; el Capítulo II presenta el análisis y diseño estructurado mediante Diagramas de Flujo de Datos (DFD) sincronizados con la metodología SCRUM; y el Capítulo III desarrolla el análisis orientado a objetos mediante el Diagrama de Casos de Uso y el Diagrama de Clases, ambos en notación UML 2.x.</p>
 
-
-          <!-- ── 2. ANTECEDENTES ── -->
           <h3 class="doc-h2" id="antecedentes">
             <span class="doc-num">2</span>
             Antecedentes
@@ -334,8 +275,6 @@
 
           <p>Para el modelado de sistemas de esta naturaleza, la ingeniería de software dispone de dos paradigmas complementarios: el análisis estructurado —formalizado por Yourdon y DeMarco (1979) mediante los DFD— y el análisis orientado a objetos —estandarizado por Booch, Rumbaugh y Jacobson (1999) mediante UML—. El presente proyecto adopta ambos paradigmas de forma sinérgica. La metodología de desarrollo seleccionada es SCRUM (Schwaber y Sutherland, 2020), marco ágil de amplia eficacia documentada en proyectos de software para pequeñas empresas (Dingsøyr et al., 2012).</p>
 
-
-          <!-- ── 3. PLANTEAMIENTO ── -->
           <h3 class="doc-h2" id="planteamiento">
             <span class="doc-num">3</span>
             Planteamiento del Problema
@@ -355,8 +294,6 @@
             <p>La confluencia de procesos manuales, desarticulados y sin integración tecnológica compromete la eficiencia operativa, la competitividad y el crecimiento sostenible de la Salteñería Chikis en el mediano y largo plazo.</p>
           </div>
 
-
-          <!-- ── 4. ÁRBOL DE PROBLEMAS ── -->
           <h3 class="doc-h2" id="arbol-problemas">
             <span class="doc-num">4</span>
             Árbol de Problemas
@@ -364,27 +301,21 @@
 
           <p>Con el propósito de determinar con precisión las relaciones de causa y efecto que convergen en la situación problemática, se aplicó la técnica del árbol de problemas bajo los lineamientos metodológicos de la Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ, 1987). Este análisis permite identificar las causas raíces —directas e indirectas— que originan el problema central, así como las consecuencias sistémicas que este provoca en la gestión operativa y comercial de la empresa.</p>
 
-          <!-- Árbol de problemas visual en SVG inline -->
           <figure class="doc-figure">
-  <div class="doc-figure__header">
-    <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
-    <span class="doc-figure__header-label">Figura 1</span>
-    <span class="doc-figure__header-sub">Análisis causal · Metodología GIZ (1987) · Elaboración propia (2026)</span>
-  </div>
-  <div class="doc-figure__img-wrap">
-    <img
-      src="img/arbol-problemas.png"
-      alt="Árbol de Problemas del Sistema de Ventas Salteñería Chikis"
-      loading="lazy"
-    >
-  </div>
-  <figcaption>
-    <strong>Figura 1.</strong> Árbol de Problemas del Sistema de Ventas — Salteñería Chikis.
-    <em>Nota.</em> Elaboración propia (2026), basada en la metodología GIZ (1987) y en el análisis de la situación operativa actual.
-  </figcaption>
-</figure>
+            <div class="doc-figure__header">
+              <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+              <span class="doc-figure__header-label">Figura 1</span>
+              <span class="doc-figure__header-sub">Análisis causal · Metodología GIZ (1987) · Elaboración propia (2026)</span>
+            </div>
+            <div class="doc-figure__img-wrap">
+              <img src="img/arbol-problemas.png" alt="Árbol de Problemas del Sistema de Ventas Salteñería Chikis" loading="lazy">
+            </div>
+            <figcaption>
+              <strong>Figura 1.</strong> Árbol de Problemas del Sistema de Ventas — Salteñería Chikis.
+              <em>Nota.</em> Elaboración propia (2026), basada en la metodología GIZ (1987) y en el análisis de la situación operativa actual.
+            </figcaption>
+          </figure>
 
-          <!-- ── 5. FORMULACIÓN ── -->
           <h3 class="doc-h2" id="formulacion">
             <span class="doc-num">5</span>
             Formulación del Problema
@@ -406,8 +337,6 @@
             <li>¿Bajo qué esquema temporal y fases de Sprints planificar el proyecto conforme a la metodología SCRUM?</li>
           </ul>
 
-
-          <!-- ── 6. PROPÓSITO ── -->
           <h3 class="doc-h2" id="proposito">
             <span class="doc-num">6</span>
             Propósito del Estudio
@@ -433,8 +362,6 @@
             <li>Elaborar la planificación mediante un diagrama de Gantt estructurado por fases y Sprints conforme a la metodología SCRUM.</li>
           </ul>
 
-
-          <!-- ── 7. MÉTODO E INSTRUMENTOS ── -->
           <h3 class="doc-h2" id="metodo">
             <span class="doc-num">7</span>
             Método, Medios e Instrumentos de Investigación
@@ -452,8 +379,6 @@
           <p>El sistema simplificará y formalizará los procesos del negocio, reduciendo la dependencia de registros manuales. La centralización en una base de datos relacional permitirá acceder en tiempo real a reportes de ventas, historial de demanda e inventario por sucursal. El módulo de control de inventario resolverá el problema recurrente de pedidos de productos no disponibles.</p>
 
           <h4 class="doc-h3">7.2 Alcances del Sistema</h4>
-
-          <p>Los módulos funcionales incluidos en el alcance son:</p>
           <ul>
             <li><strong>Módulo de Gestión de Usuarios:</strong> registro, autenticación, recuperación de contraseña y administración de perfiles para Cliente, Vendedor y Administrador.</li>
             <li><strong>Módulo de Catálogo de Productos:</strong> gestión completa del inventario con precios, descripciones, imágenes y control de stock en tiempo real.</li>
@@ -464,16 +389,10 @@
             <li><strong>Módulo de Administración y Reportes:</strong> paneles de estadísticas de ventas, demanda por producto y gestión de usuarios.</li>
           </ul>
 
-          <p>Las exclusiones del alcance incluyen la logística de entrega a domicilio, la integración con sistemas contables externos, el soporte para múltiples monedas, el desarrollo de aplicaciones móviles nativas, los programas de fidelización de clientes y la publicación automática en redes sociales. Geográficamente, el sistema opera en las tres sucursales actuales con arquitectura escalable a nuevas sucursales.</p>
-
           <h4 class="doc-h3">7.3 Metodología de Desarrollo</h4>
-
           <p>La metodología seleccionada es SCRUM (Schwaber y Sutherland, 2020). Las metodologías tradicionales como el modelo en cascada resultan inadecuadas para este contexto, donde los requerimientos están sujetos a refinamiento progresivo. SCRUM organiza el desarrollo en Sprints de duración fija al término de los cuales se entrega un incremento funcional evaluable por el cliente.</p>
-
           <p>La adopción de SCRUM descansa en cuatro argumentos: (1) la naturaleza iterativa permite desarrollar los módulos de mayor valor —carrito y pedidos— en los primeros Sprints; (2) la colaboración con el Product Owner garantiza alineación con las necesidades reales del negocio; (3) el tamaño reducido del equipo es óptimo para SCRUM, documentado para equipos de tres a nueve personas; y (4) la incorporación de artefactos UML del Proceso Unificado enriquece la documentación sin imponer rigidez burocrática (Kruchten, 2004).</p>
 
-
-          <!-- ── 8. PLANIFICACIÓN ── -->
           <h3 class="doc-h2" id="planificacion">
             <span class="doc-num">8</span>
             Planificación de Actividades
@@ -481,37 +400,31 @@
 
           <p>La planificación se estructura en cinco fases distribuidas en un horizonte de diez semanas calendario. Las fases de análisis y diseño (Sprint 0) preceden al desarrollo iterativo organizado en tres Sprints de dos semanas. La fase de cierre consolida pruebas de aceptación, corrección de defectos y despliegue en producción.</p>
 
-          <!-- Tabla de Gantt -->
           <figure class="doc-figure">
-  <div class="doc-figure__header">
-    <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-    <span class="doc-figure__header-label">Figura 2</span>
-    <span class="doc-figure__header-sub">Diagrama de Gantt · SCRUM · 10 semanas · Elaboración propia (2026)</span>
-  </div>
-  <div class="doc-figure__img-wrap">
-    <img
-      src="img/gantt.png"
-      alt="Diagrama de Gantt — Planificación del Proyecto Sistema Integral de Ventas Salteñería Chikis"
-      loading="lazy"
-    >
-  </div>
-  <figcaption>
-    <strong>Figura 2.</strong> Diagrama de Gantt — Planificación del Proyecto Sistema Integral de Ventas Salteñería Chikis.
-    <em>Nota.</em> Las fechas son referenciales y están sujetas a ajuste en función de la velocidad del equipo (<em>velocity</em>) medida en los Sprints iniciales. Elaboración propia (2026).
-  </figcaption>
-</figure>
+            <div class="doc-figure__header">
+              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+              <span class="doc-figure__header-label">Figura 2</span>
+              <span class="doc-figure__header-sub">Diagrama de Gantt · SCRUM · 10 semanas · Elaboración propia (2026)</span>
+            </div>
+            <div class="doc-figure__img-wrap">
+              <img src="img/gantt.png" alt="Diagrama de Gantt — Planificación del Proyecto Sistema Integral de Ventas Salteñería Chikis" loading="lazy">
+            </div>
+            <figcaption>
+              <strong>Figura 2.</strong> Diagrama de Gantt — Planificación del Proyecto Sistema Integral de Ventas Salteñería Chikis.
+              <em>Nota.</em> Las fechas son referenciales y están sujetas a ajuste en función de la velocidad del equipo (<em>velocity</em>) medida en los Sprints iniciales. Elaboración propia (2026).
+            </figcaption>
+          </figure>
 
         </div>
-        <!-- /doc-body -->
-
       </article>
-      <!-- /Capítulo I -->
 
 
       <!-- ══════════════════════════════════════════
-           CAPÍTULO II — ANÁLISIS ESTRUCTURADO · SCRUM
+           CAPÍTULO II — ANÁLISIS ESTRUCTURADO
+           id="marco-teorico" aquí, al inicio del capítulo
       ══════════════════════════════════════════ -->
-      <article class="doc-chapter" id="modelo-ambiental">
+      <article class="doc-chapter" id="marco-teorico">
+
         <div class="doc-chapter-header">
           <div class="doc-chapter-eyebrow">
             <i class="fa-solid fa-earth-americas"></i>
@@ -526,7 +439,6 @@
 
         <div class="doc-body">
 
-          <!-- ── INTRO PARADIGMA ── -->
           <h3 class="doc-h2">
             <span class="doc-num">1</span>
             Introducción al Paradigma Estructurado y su Sincronización con Sprints
@@ -536,7 +448,6 @@
 
           <p>En el marco del presente proyecto, este modelado no se presenta de forma aislada, sino que se alinea estrictamente con el desarrollo incremental por Sprints propuesto por la metodología SCRUM. Cada nivel de descomposición del DFD corresponde a una fase o iteración del proyecto: el Nivel 0 delimita el sistema en el Sprint 0 de análisis; el Nivel 1 establece los macroprocesos que guían la construcción del Product Backlog; los Niveles 2 y 3 detallan los subprocesos que se priorizan y desarrollan en los Sprints 1, 2 y 3.</p>
 
-          <!-- Tabla de sincronización DFD-SCRUM -->
           <div class="doc-table-wrap">
             <table class="doc-table">
               <thead>
@@ -557,11 +468,9 @@
           </div>
           <span class="doc-note"><i class="fa-solid fa-circle-info" style="color:var(--gold-400);margin-right:4px"></i>Correspondencia entre niveles de descomposición DFD y fases de desarrollo SCRUM para el Sistema Integral de Ventas Salteñería Chikis.</span>
 
-
-          <!-- ══════════════════════════════
-               SPRINT 0 — MODELO AMBIENTAL
-          ══════════════════════════════ -->
-          <h3 class="doc-h2" style="margin-top:3rem" id="sprint0-ambiental">
+          <!-- ── SPRINT 0: MODELO AMBIENTAL ── -->
+          <!-- id="modelo-ambiental" en el h3 para que el anchor funcione exactamente aquí -->
+          <h3 class="doc-h2" id="modelo-ambiental" style="margin-top:3rem">
             <span class="doc-num">2</span>
             Sprint 0: Configuración Inicial y Modelo Ambiental del Sistema
           </h3>
@@ -570,191 +479,81 @@
 
           <p>El Diagrama de Contexto (Nivel 0) constituye el modelo ambiental global del sistema de ventas en línea de la Salteñería Chikis. En esta etapa inicial, el sistema completo se representa como un único proceso central denominado <strong>SISTEMA DE VENTA DE SALTEÑAS</strong>, estableciendo formalmente las fronteras del software con las siete entidades externas que interactúan con él. Este diagrama delimita con precisión qué está dentro del sistema y qué pertenece a su entorno, siendo la base para todas las decisiones de diseño posteriores.</p>
 
-          <!-- ── DFD NIVEL 0 — SVG ── -->
           <figure class="doc-figure">
-  <div class="doc-figure__header">
-    <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
-    <span class="doc-figure__header-label">Figura 3</span>
-    <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 0 · Elaboración propia (2026)</span>
-  </div>
-  <div class="doc-figure__img-wrap">
-    <img
-      src="img/dfd-nivel-0.png"
-      alt="DFD Nivel 0 — Diagrama de Contexto del Sistema Integral de Ventas en Línea, Salteñería Chikis"
-      loading="lazy"
-    >
-  </div>
-  <figcaption>
-    <strong>Figura 3.</strong> DFD Nivel 0 — Diagrama de Contexto del Sistema Integral de Ventas en Línea, Salteñería Chikis.
-    Notación Yourdon-DeMarco.
-    <em>Nota.</em> Las líneas continuas representan flujos de entrada al sistema; las punteadas, flujos de salida.
-    Los rectángulos azules son actores del dominio; los verdes, sistemas externos. Elaboración propia (2026).
-  </figcaption>
-</figure>
+            <div class="doc-figure__header">
+              <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
+              <span class="doc-figure__header-label">Figura 3</span>
+              <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 0 · Elaboración propia (2026)</span>
+            </div>
+            <div class="doc-figure__img-wrap">
+              <img src="img/dfd-nivel-0.png" alt="DFD Nivel 0 — Diagrama de Contexto del Sistema Integral de Ventas en Línea, Salteñería Chikis" loading="lazy">
+            </div>
+            <figcaption>
+              <strong>Figura 3.</strong> DFD Nivel 0 — Diagrama de Contexto del Sistema Integral de Ventas en Línea, Salteñería Chikis. Notación Yourdon-DeMarco.
+              <em>Nota.</em> Las líneas continuas representan flujos de entrada al sistema; las punteadas, flujos de salida. Los rectángulos azules son actores del dominio; los verdes, sistemas externos. Elaboración propia (2026).
+            </figcaption>
+          </figure>
 
-          <!-- Tabla de entidades externas -->
           <h5 class="doc-h4">Inventario de Entidades Externas y Flujos del DFD Nivel 0</h5>
           <div class="doc-table-wrap">
             <table class="doc-table">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Entidad Externa</th>
-                  <th>Tipo</th>
-                  <th>Flujos de Entrada al Sistema</th>
-                  <th>Flujos de Salida del Sistema</th>
+                  <th>#</th><th>Entidad Externa</th><th>Tipo</th>
+                  <th>Flujos de Entrada al Sistema</th><th>Flujos de Salida del Sistema</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>E1</td>
-                  <td>Cliente</td>
-                  <td>Actor humano</td>
-                  <td>Datos de registro, solicitud de pedido, credenciales de acceso, confirmación de pago</td>
-                  <td>Estado del pedido, comprobante de compra, notificación de disponibilidad</td>
-                </tr>
-                <tr>
-                  <td>E2</td>
-                  <td>Administrador</td>
-                  <td>Actor humano</td>
-                  <td>Credenciales de acceso, configuración del sistema, datos de productos</td>
-                  <td>Reportes gerenciales, alertas de stock mínimo, estadísticas de ventas</td>
-                </tr>
-                <tr>
-                  <td>E3</td>
-                  <td>Repartidor</td>
-                  <td>Actor humano</td>
-                  <td>Confirmación de entrega, estado de ruta</td>
-                  <td>Instrucciones de despacho, dirección de entrega, datos del pedido</td>
-                </tr>
-                <tr>
-                  <td>E4</td>
-                  <td>Encargado de Cocina</td>
-                  <td>Actor humano</td>
-                  <td>Ingreso de inventario diario (sabores y cantidades producidas)</td>
-                  <td>Alertas de stock mínimo, proyección de demanda</td>
-                </tr>
-                <tr>
-                  <td>E5</td>
-                  <td>Sist. Facturación SIN</td>
-                  <td>Sistema externo</td>
-                  <td>Validación fiscal, código de autorización NIT</td>
-                  <td>Comprobante fiscal digital, solicitud de autorización de factura</td>
-                </tr>
-                <tr>
-                  <td>E6</td>
-                  <td>Pasarela de Pagos</td>
-                  <td>API externa</td>
-                  <td>Confirmación de pago, código de transacción</td>
-                  <td>Solicitud de cobro, monto de la transacción, datos del cliente pagador</td>
-                </tr>
-                <tr>
-                  <td>E7</td>
-                  <td>WhatsApp API</td>
-                  <td>API externa</td>
-                  <td>Estado de entrega del mensaje, acuse de recibo</td>
-                  <td>Notificación de confirmación de pedido, alerta de estado de entrega</td>
-                </tr>
+                <tr><td>E1</td><td>Cliente</td><td>Actor humano</td><td>Datos de registro, solicitud de pedido, credenciales de acceso, confirmación de pago</td><td>Estado del pedido, comprobante de compra, notificación de disponibilidad</td></tr>
+                <tr><td>E2</td><td>Administrador</td><td>Actor humano</td><td>Credenciales de acceso, configuración del sistema, datos de productos</td><td>Reportes gerenciales, alertas de stock mínimo, estadísticas de ventas</td></tr>
+                <tr><td>E3</td><td>Repartidor</td><td>Actor humano</td><td>Confirmación de entrega, estado de ruta</td><td>Instrucciones de despacho, dirección de entrega, datos del pedido</td></tr>
+                <tr><td>E4</td><td>Encargado de Cocina</td><td>Actor humano</td><td>Ingreso de inventario diario (sabores y cantidades producidas)</td><td>Alertas de stock mínimo, proyección de demanda</td></tr>
+                <tr><td>E5</td><td>Sist. Facturación SIN</td><td>Sistema externo</td><td>Validación fiscal, código de autorización NIT</td><td>Comprobante fiscal digital, solicitud de autorización de factura</td></tr>
+                <tr><td>E6</td><td>Pasarela de Pagos</td><td>API externa</td><td>Confirmación de pago, código de transacción</td><td>Solicitud de cobro, monto de la transacción, datos del cliente pagador</td></tr>
+                <tr><td>E7</td><td>WhatsApp API</td><td>API externa</td><td>Estado de entrega del mensaje, acuse de recibo</td><td>Notificación de confirmación de pedido, alerta de estado de entrega</td></tr>
               </tbody>
             </table>
           </div>
           <span class="doc-note"><i class="fa-solid fa-circle-info" style="color:var(--gold-400);margin-right:4px"></i>Elaboración propia a partir del levantamiento de requerimientos y la identificación de fronteras del sistema de la Salteñería Chikis.</span>
 
-
-          <!-- ── DFD NIVEL 1 ── -->
           <h4 class="doc-h3">2.2 DFD Nivel 1 — Descomposición Global del Sistema</h4>
 
           <p>El Nivel 1 descompone el proceso central del Diagrama de Contexto en seis módulos funcionales que constituyen la arquitectura de alto nivel del sistema. Este mapa global sirve como la línea base del <em>Product Backlog</em>, definiendo la separación de responsabilidades que serán abordadas en las iteraciones de desarrollo programadas. Cada macroproceso se conecta a los almacenes de datos compartidos que persisten la información del negocio entre módulos.</p>
 
-          <!-- DFD NIVEL 1 SVG -->
           <figure class="doc-figure">
-  <div class="doc-figure__header">
-    <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
-    <span class="doc-figure__header-label">Figura 4</span>
-    <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 0 — Diseño · Elaboración propia (2026)</span>
-  </div>
-  <div class="doc-figure__img-wrap">
-    <img
-      src="img/dfd-nivel-1.png"
-      alt="DFD Nivel 1 — Descomposición en Seis Módulos Funcionales del Sistema Integral de Ventas, Salteñería Chikis"
-      loading="lazy"
-    >
-  </div>
-  <figcaption>
-    <strong>Figura 4.</strong> DFD Nivel 1 — Descomposición en Módulos Principales del Sistema Integral de Ventas, Salteñería Chikis.
-    Notación Yourdon-DeMarco.
-    <em>Nota.</em> Los rectángulos abiertos representan almacenes de datos persistentes (D1–D5).
-    Los círculos azules son módulos del dominio del cliente; los verdes, módulos de integración externa.
-    Elaboración propia (2026).
-  </figcaption>
-</figure>
-          
+            <div class="doc-figure__header">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+              <span class="doc-figure__header-label">Figura 4</span>
+              <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 0 — Diseño · Elaboración propia (2026)</span>
+            </div>
+            <div class="doc-figure__img-wrap">
+              <img src="img/dfd-nivel-1.png" alt="DFD Nivel 1 — Descomposición en Seis Módulos Funcionales del Sistema Integral de Ventas, Salteñería Chikis" loading="lazy">
+            </div>
+            <figcaption>
+              <strong>Figura 4.</strong> DFD Nivel 1 — Descomposición en Módulos Principales del Sistema Integral de Ventas, Salteñería Chikis. Notación Yourdon-DeMarco.
+              <em>Nota.</em> Los rectángulos abiertos representan almacenes de datos persistentes (D1–D5). Los círculos azules son módulos del dominio del cliente; los verdes, módulos de integración externa. Elaboración propia (2026).
+            </figcaption>
+          </figure>
 
-          <!-- Tabla de especificación de procesos N1 -->
           <h5 class="doc-h4">Especificación de Procesos — DFD Nivel 1</h5>
           <div class="doc-table-wrap">
             <table class="doc-table">
               <thead>
-                <tr>
-                  <th>Proceso</th>
-                  <th>Nombre</th>
-                  <th>Entradas</th>
-                  <th>Salidas</th>
-                  <th>Almacenes</th>
-                </tr>
+                <tr><th>Proceso</th><th>Nombre</th><th>Entradas</th><th>Salidas</th><th>Almacenes</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1.0</td>
-                  <td>Gestión de Autenticación y Usuarios</td>
-                  <td>Credenciales de acceso, datos de registro, rol del usuario</td>
-                  <td>Token de sesión validada, perfil de usuario activo</td>
-                  <td>D1 — Usuarios/Perfiles</td>
-                </tr>
-                <tr>
-                  <td>2.0</td>
-                  <td>Catálogo y Tienda Web</td>
-                  <td>Sesión validada, solicitud de productos, preferencias del cliente</td>
-                  <td>Listado de productos disponibles, precios actualizados, disponibilidad de stock</td>
-                  <td>D2 — Catálogo Productos</td>
-                </tr>
-                <tr>
-                  <td>3.0</td>
-                  <td>Procesamiento de Pedidos y Carrito</td>
-                  <td>Productos seleccionados, sesión del cliente, método de entrega</td>
-                  <td>Orden de pedido confirmada, reserva de stock temporal, número de pedido</td>
-                  <td>D3 — Pedidos/Carritos</td>
-                </tr>
-                <tr>
-                  <td>4.0</td>
-                  <td>Pasarela de Pagos y Facturación</td>
-                  <td>Orden confirmada, datos del pagador, método de pago seleccionado</td>
-                  <td>Confirmación de transacción, comprobante fiscal digital (SIN), recibo al cliente</td>
-                  <td>D3, D5 — Pedidos / Transacciones</td>
-                </tr>
-                <tr>
-                  <td>5.0</td>
-                  <td>Control de Inventarios y Producción</td>
-                  <td>Ingreso de producción diaria (cocina), ajustes de stock (admin)</td>
-                  <td>Stock actualizado en tiempo real, alertas de stock mínimo, disponibilidad para P2.0</td>
-                  <td>D4 — Inventario/Stock</td>
-                </tr>
-                <tr>
-                  <td>6.0</td>
-                  <td>Despacho, Logística y Reportes</td>
-                  <td>Pedido confirmado y pagado, datos de entrega, confirmación del repartidor</td>
-                  <td>Instrucciones al repartidor, notificación WhatsApp al cliente, reportes gerenciales</td>
-                  <td>D3, D5 — Pedidos / Transacciones</td>
-                </tr>
+                <tr><td>1.0</td><td>Gestión de Autenticación y Usuarios</td><td>Credenciales de acceso, datos de registro, rol del usuario</td><td>Token de sesión validada, perfil de usuario activo</td><td>D1 — Usuarios/Perfiles</td></tr>
+                <tr><td>2.0</td><td>Catálogo y Tienda Web</td><td>Sesión validada, solicitud de productos, preferencias del cliente</td><td>Listado de productos disponibles, precios actualizados, disponibilidad de stock</td><td>D2 — Catálogo Productos</td></tr>
+                <tr><td>3.0</td><td>Procesamiento de Pedidos y Carrito</td><td>Productos seleccionados, sesión del cliente, método de entrega</td><td>Orden de pedido confirmada, reserva de stock temporal, número de pedido</td><td>D3 — Pedidos/Carritos</td></tr>
+                <tr><td>4.0</td><td>Pasarela de Pagos y Facturación</td><td>Orden confirmada, datos del pagador, método de pago seleccionado</td><td>Confirmación de transacción, comprobante fiscal digital (SIN), recibo al cliente</td><td>D3, D5 — Pedidos / Transacciones</td></tr>
+                <tr><td>5.0</td><td>Control de Inventarios y Producción</td><td>Ingreso de producción diaria (cocina), ajustes de stock (admin)</td><td>Stock actualizado en tiempo real, alertas de stock mínimo, disponibilidad para P2.0</td><td>D4 — Inventario/Stock</td></tr>
+                <tr><td>6.0</td><td>Despacho, Logística y Reportes</td><td>Pedido confirmado y pagado, datos de entrega, confirmación del repartidor</td><td>Instrucciones al repartidor, notificación WhatsApp al cliente, reportes gerenciales</td><td>D3, D5 — Pedidos / Transacciones</td></tr>
               </tbody>
             </table>
           </div>
           <span class="doc-note"><i class="fa-solid fa-circle-info" style="color:var(--gold-400);margin-right:4px"></i>Elaboración propia. La descomposición en seis procesos principales establece la línea base del Product Backlog bajo la metodología SCRUM.</span>
 
-
-          <!-- ══════════════════════════════
-               SPRINT 1-2: MODELO COMPORTAMIENTO
-          ══════════════════════════════ -->
+          <!-- ── SPRINT 1-2: MODELO COMPORTAMIENTO ── -->
           <h3 class="doc-h2" id="modelo-comportamiento" style="margin-top:3rem">
             <span class="doc-num">3</span>
             Sprint 1 y Sprint 2: Análisis del Comportamiento de los Subsistemas Transaccionales
@@ -762,74 +561,39 @@
 
           <h4 class="doc-h3">3.1 DFD Nivel 2 — Subsistema Tienda Web (Proceso 2.0)</h4>
 
-          <p>El Nivel 2 descompone el Proceso 2.0 — <em>Catálogo y Tienda Web</em> — en sus tres subprocesos internos esenciales. Este nivel de detalle analítico corresponde a las tareas de diseño e implementación del backend planificadas para los primeros Sprints, especificando la secuencia de transformaciones que sufren los datos desde la búsqueda de productos hasta la persistencia de la orden de compra. El Proceso 2.0 fue seleccionado para la descomposición de Nivel 2 por ser el módulo de mayor valor de negocio en los Sprints iniciales —es el canal directo de interacción del cliente con el catálogo—, siendo parte fundamental de la definición de «Hecho» (<em>Definition of Done</em>) de los dos primeros Sprints.</p>
+          <p>El Nivel 2 descompone el Proceso 2.0 — <em>Catálogo y Tienda Web</em> — en sus tres subprocesos internos esenciales. Este nivel de detalle analítico corresponde a las tareas de diseño e implementación del backend planificadas para los primeros Sprints, especificando la secuencia de transformaciones que sufren los datos desde la búsqueda de productos hasta la persistencia de la orden de compra.</p>
 
-          <!-- DFD NIVEL 2 SVG -->
-          
           <figure class="doc-figure">
-  <div class="doc-figure__header">
-    <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-    <span class="doc-figure__header-label">Figura 5</span>
-    <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 1–2 · Elaboración propia (2026)</span>
-  </div>
-  <div class="doc-figure__img-wrap">
-    <img
-      src="img/dfd-nivel-2.png"
-      alt="DFD Nivel 2 — Descomposición del Módulo Catálogo y Tienda Web (Proceso 2.0), Salteñería Chikis"
-      loading="lazy"
-    >
-  </div>
-  <figcaption>
-    <strong>Figura 5.</strong> DFD Nivel 2 — Subprocesos del Módulo Tienda Web (Proceso 2.0), Salteñería Chikis.
-    <em>Nota.</em> Muestra la descomposición detallada del proceso de tienda web y la interacción dinámica
-    con los almacenes de productos e inventario. Elaboración propia (2026).
-  </figcaption>
-</figure>
+            <div class="doc-figure__header">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              <span class="doc-figure__header-label">Figura 5</span>
+              <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 1–2 · Elaboración propia (2026)</span>
+            </div>
+            <div class="doc-figure__img-wrap">
+              <img src="img/dfd-nivel-2.png" alt="DFD Nivel 2 — Descomposición del Módulo Catálogo y Tienda Web (Proceso 2.0), Salteñería Chikis" loading="lazy">
+            </div>
+            <figcaption>
+              <strong>Figura 5.</strong> DFD Nivel 2 — Subprocesos del Módulo Tienda Web (Proceso 2.0), Salteñería Chikis.
+              <em>Nota.</em> Muestra la descomposición detallada del proceso de tienda web y la interacción dinámica con los almacenes de productos e inventario. Elaboración propia (2026).
+            </figcaption>
+          </figure>
 
-          <!-- Tabla especificación N2 -->
           <h5 class="doc-h4">Especificación de Subprocesos — DFD Nivel 2 (Módulo Tienda Web)</h5>
           <div class="doc-table-wrap">
             <table class="doc-table">
               <thead>
-                <tr>
-                  <th>Subproceso</th>
-                  <th>Descripción funcional</th>
-                  <th>Entradas</th>
-                  <th>Salidas</th>
-                  <th>Lógica de proceso</th>
-                </tr>
+                <tr><th>Subproceso</th><th>Descripción funcional</th><th>Entradas</th><th>Salidas</th><th>Lógica de proceso</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>2.1 — Consultar Disponibilidad de Productos</td>
-                  <td>Filtra los productos activos en el almacén de datos según los horarios de atención y la producción diaria registrada por el Encargado de Cocina.</td>
-                  <td>Solicitud de búsqueda del cliente, filtros de categoría/sabor, horario de atención</td>
-                  <td>Listado de productos activos con precio y stock actualizado, indicador de disponibilidad</td>
-                  <td>SI stock_actual &gt; 0 Y hora_actual DENTRO DE horario_atencion → mostrar_producto(disponible). SI stock_actual = 0 → mostrar_producto(agotado, no_seleccionable)</td>
-                </tr>
-                <tr>
-                  <td>2.2 — Actualizar Precios y Ofertas</td>
-                  <td>Permite al Administrador modificar los costos unitarios de los productos del catálogo y aplicar promociones vigentes con fechas de inicio y fin.</td>
-                  <td>Nuevos precios, rango de fechas de promoción, porcentaje de descuento, credenciales del administrador</td>
-                  <td>Catálogo actualizado en D2, precio nuevo visible en tienda web, historial de cambios de precio</td>
-                  <td>VERIFICAR rol = Administrador → ACTUALIZAR D2.precio WHERE id_producto = X → REGISTRAR auditoria_cambio_precio(fecha, usuario, precio_anterior, precio_nuevo)</td>
-                </tr>
-                <tr>
-                  <td>2.3 — Registrar Preferencias de Cliente</td>
-                  <td>Almacena las búsquedas frecuentes y productos favoritos del cliente para personalizar la experiencia de usuario en sesiones posteriores.</td>
-                  <td>Historial de navegación del cliente, productos añadidos al carrito, productos visualizados</td>
-                  <td>Perfil de preferencias persistido en D3, orden de productos en pantalla personalizado, sugerencias de productos</td>
-                  <td>REGISTRAR producto_visto(id_cliente, id_producto, timestamp) → SI frecuencia_visita &gt; umbral → MARCAR_FAVORITO → ordenar_catalogo_por_afinidad(id_cliente)</td>
-                </tr>
+                <tr><td>2.1 — Consultar Disponibilidad de Productos</td><td>Filtra los productos activos en el almacén de datos según los horarios de atención y la producción diaria registrada por el Encargado de Cocina.</td><td>Solicitud de búsqueda del cliente, filtros de categoría/sabor, horario de atención</td><td>Listado de productos activos con precio y stock actualizado, indicador de disponibilidad</td><td>SI stock_actual &gt; 0 Y hora_actual DENTRO DE horario_atencion → mostrar_producto(disponible). SI stock_actual = 0 → mostrar_producto(agotado, no_seleccionable)</td></tr>
+                <tr><td>2.2 — Actualizar Precios y Ofertas</td><td>Permite al Administrador modificar los costos unitarios de los productos del catálogo y aplicar promociones vigentes con fechas de inicio y fin.</td><td>Nuevos precios, rango de fechas de promoción, porcentaje de descuento, credenciales del administrador</td><td>Catálogo actualizado en D2, precio nuevo visible en tienda web, historial de cambios de precio</td><td>VERIFICAR rol = Administrador → ACTUALIZAR D2.precio WHERE id_producto = X → REGISTRAR auditoria_cambio_precio(fecha, usuario, precio_anterior, precio_nuevo)</td></tr>
+                <tr><td>2.3 — Registrar Preferencias de Cliente</td><td>Almacena las búsquedas frecuentes y productos favoritos del cliente para personalizar la experiencia de usuario en sesiones posteriores.</td><td>Historial de navegación del cliente, productos añadidos al carrito, productos visualizados</td><td>Perfil de preferencias persistido en D3, orden de productos en pantalla personalizado, sugerencias de productos</td><td>REGISTRAR producto_visto(id_cliente, id_producto, timestamp) → SI frecuencia_visita &gt; umbral → MARCAR_FAVORITO → ordenar_catalogo_por_afinidad(id_cliente)</td></tr>
               </tbody>
             </table>
           </div>
           <span class="doc-note"><i class="fa-solid fa-circle-info" style="color:var(--gold-400);margin-right:4px"></i>La lógica de proceso expresada en pseudocódigo estructurado es la base del diseño del backend (Sprint 1 y Sprint 2).</span>
 
-
-          <!-- ══════════════════════════════
-               SPRINT 3: DFD NIVEL 3
-          ══════════════════════════════ -->
+          <!-- ── SPRINT 3: DFD NIVEL 3 ── -->
           <h3 class="doc-h2" id="sprint3-interaccion" style="margin-top:3rem">
             <span class="doc-num">4</span>
             Sprint 3: Diseño de la Experiencia y Flujo de Interacción Final
@@ -837,70 +601,38 @@
 
           <h4 class="doc-h3">4.1 DFD Nivel 3 — Flujo de Interacción del Usuario</h4>
 
-          <p>El Nivel 3 describe el comportamiento dinámico y secuencial del usuario-cliente en la plataforma, desde el acceso inicial hasta el cierre de la transacción de compra. Este refinamiento descendente final proporciona los lineamientos lógicos necesarios para el diseño de la interfaz de usuario (UI) y la experiencia de navegación (UX), ejecutadas en el último ciclo de desarrollo del sistema. El diagrama modela tres interacciones críticas que ocurren en el flujo de pago y que involucran al sistema interno junto con las entidades externas Pasarela de Pagos y WhatsApp API.</p>
+          <p>El Nivel 3 describe el comportamiento dinámico y secuencial del usuario-cliente en la plataforma, desde el acceso inicial hasta el cierre de la transacción de compra. Este refinamiento descendente final proporciona los lineamientos lógicos necesarios para el diseño de la interfaz de usuario (UI) y la experiencia de navegación (UX), ejecutadas en el último ciclo de desarrollo del sistema.</p>
 
-          <!-- DFD NIVEL 3 SVG -->
           <figure class="doc-figure">
-  <div class="doc-figure__header">
-    <i class="fa-solid fa-arrows-spin" aria-hidden="true"></i>
-    <span class="doc-figure__header-label">Figura 6</span>
-    <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 3 · Elaboración propia (2026)</span>
-  </div>
-  <div class="doc-figure__img-wrap">
-    <img
-      src="img/dfd-nivel-3.png"
-      alt="DFD Nivel 3 — Flujo de Interacción del Usuario en el Proceso de Compra, Salteñería Chikis"
-      loading="lazy"
-    >
-  </div>
-  <figcaption>
-    <strong>Figura 6.</strong> DFD Nivel 3 — Flujo de Interacción del Usuario en el Proceso de Compra, Salteñería Chikis.
-    <em>Nota.</em> El diagrama muestra el nivel máximo de descomposición procedimental, enfocado en el flujo crítico
-    de compra del usuario final. El temporizador de 10 minutos en el proceso 3.1.2 es el mismo mecanismo implementado
-    en el prototipo de <code>menu.html</code>. Elaboración propia (2026).
-  </figcaption>
-</figure>
-          <!-- Tabla de especificación N3 -->
+            <div class="doc-figure__header">
+              <i class="fa-solid fa-arrows-spin" aria-hidden="true"></i>
+              <span class="doc-figure__header-label">Figura 6</span>
+              <span class="doc-figure__header-sub">Notación Yourdon-DeMarco · Sprint 3 · Elaboración propia (2026)</span>
+            </div>
+            <div class="doc-figure__img-wrap">
+              <img src="img/dfd-nivel-3.png" alt="DFD Nivel 3 — Flujo de Interacción del Usuario en el Proceso de Compra, Salteñería Chikis" loading="lazy">
+            </div>
+            <figcaption>
+              <strong>Figura 6.</strong> DFD Nivel 3 — Flujo de Interacción del Usuario en el Proceso de Compra, Salteñería Chikis.
+              <em>Nota.</em> El diagrama muestra el nivel máximo de descomposición procedimental, enfocado en el flujo crítico de compra del usuario final. El temporizador de 10 minutos en el proceso 3.1.2 es el mismo mecanismo implementado en el prototipo de <code>menu.html</code>. Elaboración propia (2026).
+            </figcaption>
+          </figure>
+
           <h5 class="doc-h4">Especificación de Interacciones — DFD Nivel 3 (Flujo de Compra)</h5>
           <div class="doc-table-wrap">
             <table class="doc-table">
               <thead>
-                <tr>
-                  <th>Interacción</th>
-                  <th>Descripción</th>
-                  <th>Precondición</th>
-                  <th>Postcondición</th>
-                  <th>Excepción / Flujo alternativo</th>
-                </tr>
+                <tr><th>Interacción</th><th>Descripción</th><th>Precondición</th><th>Postcondición</th><th>Excepción / Flujo alternativo</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>3.1.1 — Validar Token de Sesión</td>
-                  <td>Verifica la persistencia de las credenciales del cliente antes de habilitar la pasarela comercial. Consulta el almacén D1 para confirmar que el token no ha expirado.</td>
-                  <td>Cliente ha iniciado sesión previamente; token almacenado en sesión del navegador</td>
-                  <td>Sesión activa confirmada; módulo de catálogo y carrito habilitado para el cliente</td>
-                  <td>SI token_expirado → redirigir_login() + limpiar_carrito_temporal(). SI credenciales_inválidas → bloquear_acceso(3_intentos)</td>
-                </tr>
-                <tr>
-                  <td>3.1.2 — Confirmar Reserva de Stock Temporaria</td>
-                  <td>Bloquea las salteñas seleccionadas en el carrito de compras por un tiempo límite de 10 minutos para garantizar su disponibilidad durante el proceso de pago. Actualiza el almacén D4 marcando el stock como «reservado».</td>
-                  <td>Carrito con al menos un ítem; stock disponible &gt; 0 para cada ítem seleccionado</td>
-                  <td>Stock reservado en D4 con timestamp de expiración; temporizador de 10 min iniciado en cliente; botón de pago habilitado</td>
-                  <td>SI timer_expirado → liberar_reserva_stock() + notificar_cliente(«Reserva vencida, re-seleccione»). SI stock_insuficiente_durante_reserva → eliminar_item_carrito() + notificar_cliente</td>
-                </tr>
-                <tr>
-                  <td>3.1.3 — Sincronizar Pasarela de Pago Externa</td>
-                  <td>Consume la API financiera externa para procesar códigos QR de billeteras digitales o tarjetas de débito/crédito, esperando la confirmación de la transacción antes de liberar el pedido como «pagado».</td>
-                  <td>Reserva de stock vigente (timer activo); método de pago seleccionado por el cliente; monto total calculado</td>
-                  <td>Transacción confirmada por la API; pedido marcado como «pagado» en D3; comprobante fiscal generado en D5; notificación WhatsApp enviada al cliente</td>
-                  <td>SI timeout_pasarela (&gt;30 seg) → reintentar(max=2) → SI falla → cancelar_pedido() + liberar_stock() + notificar_error(). SI pago_rechazado → mantener_reserva(5 min extra) + solicitar_nuevo_método_pago</td>
-                </tr>
+                <tr><td>3.1.1 — Validar Token de Sesión</td><td>Verifica la persistencia de las credenciales del cliente antes de habilitar la pasarela comercial. Consulta el almacén D1 para confirmar que el token no ha expirado.</td><td>Cliente ha iniciado sesión previamente; token almacenado en sesión del navegador</td><td>Sesión activa confirmada; módulo de catálogo y carrito habilitado para el cliente</td><td>SI token_expirado → redirigir_login() + limpiar_carrito_temporal(). SI credenciales_inválidas → bloquear_acceso(3_intentos)</td></tr>
+                <tr><td>3.1.2 — Confirmar Reserva de Stock Temporaria</td><td>Bloquea las salteñas seleccionadas en el carrito de compras por un tiempo límite de 10 minutos para garantizar su disponibilidad durante el proceso de pago. Actualiza el almacén D4 marcando el stock como «reservado».</td><td>Carrito con al menos un ítem; stock disponible &gt; 0 para cada ítem seleccionado</td><td>Stock reservado en D4 con timestamp de expiración; temporizador de 10 min iniciado en cliente; botón de pago habilitado</td><td>SI timer_expirado → liberar_reserva_stock() + notificar_cliente(«Reserva vencida, re-seleccione»). SI stock_insuficiente_durante_reserva → eliminar_item_carrito() + notificar_cliente</td></tr>
+                <tr><td>3.1.3 — Sincronizar Pasarela de Pago Externa</td><td>Consume la API financiera externa para procesar códigos QR de billeteras digitales o tarjetas de débito/crédito, esperando la confirmación de la transacción antes de liberar el pedido como «pagado».</td><td>Reserva de stock vigente (timer activo); método de pago seleccionado por el cliente; monto total calculado</td><td>Transacción confirmada por la API; pedido marcado como «pagado» en D3; comprobante fiscal generado en D5; notificación WhatsApp enviada al cliente</td><td>SI timeout_pasarela (&gt;30 seg) → reintentar(max=2) → SI falla → cancelar_pedido() + liberar_stock() + notificar_error(). SI pago_rechazado → mantener_reserva(5 min extra) + solicitar_nuevo_método_pago</td></tr>
               </tbody>
             </table>
           </div>
           <span class="doc-note"><i class="fa-solid fa-circle-info" style="color:var(--gold-400);margin-right:4px"></i>Elaboración propia. Las precondiciones y postcondiciones definidas en esta tabla constituyen la base de los casos de prueba de aceptación del Sprint 3.</span>
 
-          <!-- Callout de cierre del capítulo -->
           <div class="doc-callout doc-callout--gold" style="margin-top:2.5rem">
             <div class="doc-callout__icon"><i class="fa-solid fa-check-circle"></i></div>
             <div class="doc-callout__body">
@@ -909,12 +641,12 @@
             </div>
           </div>
 
-        </div><!-- /doc-body -->
+        </div>
       </article>
 
 
       <!-- ══════════════════════════════════════════
-           CAPÍTULO III — ANÁLISIS OO (PLACEHOLDER)
+           CAPÍTULO III — ANÁLISIS OO
       ══════════════════════════════════════════ -->
       <article class="doc-chapter" id="modelo-objetos">
         <div class="doc-chapter-header">
@@ -929,713 +661,365 @@
           <div class="doc-chapter-rule"></div>
         </div>
         <div class="doc-body">
-            <div class="cap3-portada">
-  <div class="cap3-portada-glow" aria-hidden="true"></div>
-  <div class="cap3-portada-inner">
- 
-    <div class="cap3-cap-label">
-      <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
-      Capítulo III
-    </div>
- 
-    <h2 class="cap3-portada-title">
-      Análisis y Diseño<br>
-      <em>Orientado a Objetos</em>
-    </h2>
- 
-    <p class="cap3-portada-sub">
-      Modelado UML del sistema integral de ventas en línea de la Salteñería Chikis
-      mediante el Diagrama de Casos de Uso y el Diagrama de Clases, elaborados
-      conforme al estándar ISO/IEC&nbsp;19505 (UML&nbsp;2.x) del Object Management Group.
-    </p>
- 
-    <div class="cap3-portada-pills">
-      <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> UML 2.x · ISO/IEC 19505</span>
-      <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> 11 Casos de Uso identificados</span>
-      <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> 8 Clases de dominio</span>
-      <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> 4 Actores del sistema</span>
-    </div>
- 
-  </div>
-</div>
- 
- 
-<!-- ══════════════════════════════════════════
-     SECCIÓN 1 — INTRODUCCIÓN AL PARADIGMA OO
-     ══════════════════════════════════════════ -->
-<h3 class="cap3-h2">
-  <span class="num-badge">1</span>
-  Introducción al Paradigma Orientado a Objetos
-</h3>
- 
-<div class="cap3-body">
- 
-  <p>El análisis y diseño orientado a objetos (AOO/DOO) es un paradigma de ingeniería de software que modela los sistemas de información como conjuntos de objetos que encapsulan datos (atributos) y comportamiento (métodos), interactuando entre sí a través del envío de mensajes. A diferencia del paradigma estructurado —centrado en los flujos de datos y los procesos que los transforman—, el paradigma orientado a objetos organiza el conocimiento del sistema en torno a las entidades del dominio del problema, facilitando la comprensión, la modularidad, la reutilización y el mantenimiento del código.</p>
- 
-  <div class="cap3-callout" role="note">
-    <div class="cap3-callout-icon"><i class="fa-solid fa-landmark" aria-hidden="true"></i></div>
-    <div class="cap3-callout-body">
-      <span class="cap3-callout-label">Fundamento Académico — Booch, Rumbaugh &amp; Jacobson (1999)</span>
-      <p>El paradigma fue formalizado por Grady Booch (1994), James Rumbaugh (1991) e Ivar Jacobson (1992), cuyas metodologías individuales convergieron en el <strong>Proceso Unificado de Rational (RUP)</strong> y dieron origen al <strong>Lenguaje Unificado de Modelado (UML)</strong>, estándar ISO/IEC 19505 gestionado por el Object Management Group (OMG).</p>
-    </div>
-  </div>
- 
-  <p>UML define un conjunto de diagramas para modelar sistemas de software desde distintas perspectivas: los <em>diagramas de casos de uso</em> modelan las interacciones funcionales entre actores y el sistema; los <em>diagramas de clases</em> modelan la estructura estática del sistema; los <em>diagramas de secuencia</em> modelan la dinámica de interacción entre objetos; y los <em>diagramas de actividades</em> modelan los flujos de control, entre otros (Object Management Group, 2017).</p>
- 
-  <p>Para el sistema integral de ventas en línea de la Salteñería Chikis, el análisis orientado a objetos se materializa en dos artefactos UML fundamentales: el <strong>Modelo de Casos de Uso del Sistema (MCU)</strong> y el <strong>Diagrama de Clases</strong>. Ambos artefactos son complementarios entre sí y con los DFD desarrollados en el Capítulo II: mientras los DFD modelan los flujos de datos desde una perspectiva funcional, el MCU y el Diagrama de Clases modelan las interacciones del sistema con sus actores y la estructura de sus entidades de negocio desde una perspectiva orientada a objetos, proporcionando una cobertura analítica completa del sistema propuesto.</p>
- 
-</div><!-- /cap3-body -->
- 
- 
-<div class="cap3-divider" aria-hidden="true"></div>
- 
- 
-<!-- ══════════════════════════════════════════
-     SECCIÓN 2 — MODELO DE CASOS DE USO
-     ══════════════════════════════════════════ -->
-<h3 class="cap3-h2">
-  <span class="num-badge">2</span>
-  Modelo de Casos de Uso del Sistema
-</h3>
- 
-<div class="cap3-body">
- 
-  <p>El Diagrama de Casos de Uso representa las interacciones funcionales entre los actores externos del sistema y las funcionalidades —denominadas casos de uso— que el sistema provee. Siguiendo la notación UML definida por Jacobson et al. (1999), un <strong>caso de uso</strong> especifica una secuencia de acciones que el sistema realiza para producir un resultado de valor para un actor específico.</p>
- 
-  <p>Las relaciones entre casos de uso pueden ser de <strong>inclusión</strong> (<code>&lt;&lt;include&gt;&gt;</code>), cuando un caso de uso incorpora obligatoriamente el comportamiento de otro, o de <strong>extensión</strong> (<code>&lt;&lt;extend&gt;&gt;</code>), cuando un caso de uso añade comportamiento opcional a otro bajo condiciones específicas.</p>
- 
-</div>
- 
- 
-<!-- ── FIGURA 7: Diagrama de Casos de Uso ── -->
-<figure class="cap3-figure" aria-label="Figura 7 — Diagrama de Casos de Uso del Sistema">
- 
-  <div class="cap3-figure-header">
-    <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
-    <span class="cap3-figure-header-label">Figura 7</span>
-    <span class="cap3-figure-header-title">UML 2.x · Notación Jacobson (1999) · Elaboración propia (2025)</span>
-  </div>
- 
-  <div class="cap3-figure-img-wrap">
-    <!-- ► Reemplaza src="img/casos-de-uso.png" con la ruta real de tu imagen ◄ -->
-    <img
-      src="img/casos.png"
-      alt="Diagrama de Casos de Uso del Sistema Integral de Ventas en Línea Salteñería Chikis"
-      loading="lazy"
-      onerror="this.parentElement.innerHTML = document.querySelector('#ph-tpl-cu').innerHTML"
-    >
-    <!-- Plantilla de placeholder (se activa si la imagen no carga) -->
-    <template id="ph-tpl-cu">
-      <div class="cap3-figure-placeholder">
-        <div class="ph-icon"><i class="fa-solid fa-diagram-project"></i></div>
-        <span class="ph-label">Diagrama de Casos de Uso</span>
-        <span class="ph-src">src="img/casos-de-uso.png"</span>
-      </div>
-    </template>
-  </div>
- 
-  <figcaption class="cap3-figcaption">
-    <strong>Figura 7.</strong> Diagrama de Casos de Uso — Sistema Integral de Ventas en Línea Salteñería Chikis.
-    Las líneas punteadas con etiqueta <strong>&lt;&lt;include&gt;&gt;</strong> representan relaciones de inclusión obligatoria;
-    las etiquetadas <strong>&lt;&lt;extend&gt;&gt;</strong> representan extensiones condicionales.
-    La generalización de actores (Cliente → Persona ← Vendedor) indica herencia de las propiedades comunes definidas por la superclase Persona.
-    <em>Elaboración propia (2025).</em>
-  </figcaption>
- 
-</figure>
- 
- 
-<!-- ── ACTORES DEL SISTEMA ── -->
-<h4 class="cap3-h3">2.1 Actores del Sistema</h4>
- 
-<div class="cap3-body">
-  <p>Para el sistema de ventas en línea de la Salteñería Chikis se identifican <strong>cuatro actores</strong>, organizados en una jerarquía de generalización que refleja la herencia de propiedades comunes.</p>
-</div>
- 
-<div class="cap3-actors-grid" role="list">
- 
-  <!-- Actor: Persona (superclase abstracta) -->
-  <div class="cap3-actor-card" role="listitem">
-    <div class="cap3-actor-head">
-      <div class="cap3-actor-icon"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
-      <div>
-        <div class="cap3-actor-name">Persona</div>
-        <div class="cap3-actor-type">Actor abstracto · Superclase de generalización</div>
-      </div>
-    </div>
-    <p class="cap3-actor-desc">
-      Clase abstracta UML que generaliza los rasgos comunes de Cliente y Vendedor en el modelo de herencia de actores. No interactúa directamente con casos de uso, sino que proporciona la estructura base para los actores concretos derivados.
-    </p>
-    <div class="cap3-actor-cu-list">
-      <div class="cap3-actor-cu-item">Superclase de: <strong>Cliente</strong> y <strong>Vendedor</strong></div>
-      <div class="cap3-actor-cu-item">Patrón UML: Generalización de actores (herencia)</div>
-    </div>
-  </div>
- 
-  <!-- Actor: Cliente -->
-  <div class="cap3-actor-card" role="listitem">
-    <div class="cap3-actor-head">
-      <div class="cap3-actor-icon"><i class="fa-solid fa-user" aria-hidden="true"></i></div>
-      <div>
-        <div class="cap3-actor-name">Cliente</div>
-        <div class="cap3-actor-type">Actor primario · Usuario del canal de ventas</div>
-      </div>
-    </div>
-    <p class="cap3-actor-desc">
-      Usuario primario del canal de ventas en línea. Accede al catálogo, gestiona su carrito, realiza pagos y efectúa o modifica pedidos. Subclase de la superclase abstracta Persona.
-    </p>
-    <div class="cap3-actor-cu-list">
-      <div class="cap3-actor-cu-item"><strong>CU1</strong> — Agrega productos al carrito</div>
-      <div class="cap3-actor-cu-item"><strong>CU2</strong> — Realiza Pago</div>
-      <div class="cap3-actor-cu-item"><strong>CU5</strong> — Hace Pedido</div>
-      <div class="cap3-actor-cu-item"><strong>CU7</strong> — Modifica Pedido</div>
-      <div class="cap3-actor-cu-item"><strong>CU9</strong> — Recibe confirmación</div>
-    </div>
-  </div>
- 
-  <!-- Actor: Vendedor -->
-  <div class="cap3-actor-card" role="listitem">
-    <div class="cap3-actor-head">
-      <div class="cap3-actor-icon"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
-      <div>
-        <div class="cap3-actor-name">Vendedor</div>
-        <div class="cap3-actor-type">Actor secundario · Personal de gestión</div>
-      </div>
-    </div>
-    <p class="cap3-actor-desc">
-      Responsable de la gestión del inventario diario y de la generación de reportes de ventas. Subclase de la superclase abstracta Persona. Su interacción con el inventario es condición previa para la disponibilidad de productos en el canal cliente.
-    </p>
-    <div class="cap3-actor-cu-list">
-      <div class="cap3-actor-cu-item"><strong>CU10</strong> — Registra inventario del día</div>
-      <div class="cap3-actor-cu-item"><strong>CU11</strong> — Genera Reporte de Ventas</div>
-    </div>
-  </div>
- 
-  <!-- Actor: Entidad Financiera -->
-  <div class="cap3-actor-card" role="listitem">
-    <div class="cap3-actor-head">
-      <div class="cap3-actor-icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></div>
-      <div>
-        <div class="cap3-actor-name">Entidad Financiera</div>
-        <div class="cap3-actor-type">Actor secundario · Pasarela de pago electrónico</div>
-      </div>
-    </div>
-    <p class="cap3-actor-desc">
-      Sistema externo que representa la pasarela de pago electrónico. Participa en los procesos de verificación de transacciones, siendo convocada por el sistema cada vez que el Cliente inicia un proceso de pago.
-    </p>
-    <div class="cap3-actor-cu-list">
-      <div class="cap3-actor-cu-item"><strong>CU3</strong> — Verifica transacción (actor secundario)</div>
-      <div class="cap3-actor-cu-item">Protocolo: API financiera (QR / débito-crédito)</div>
-    </div>
-  </div>
- 
-</div><!-- /cap3-actors-grid -->
- 
- 
-<!-- ── RELACIONES ENTRE CASOS DE USO ── -->
-<h4 class="cap3-h3">2.2 Casos de Uso e Interdependencias</h4>
- 
-<div class="cap3-body">
-  <p>Los once casos de uso identificados modelan las dependencias funcionales del sistema mediante relaciones de inclusión y extensión. La tabla siguiente especifica cada caso de uso, su actor principal y el tipo de relación que mantiene con otros casos de uso del sistema.</p>
-</div>
- 
-<div class="cap3-legend" role="note" aria-label="Leyenda de relaciones entre casos de uso">
-  <span class="cap3-legend-title">Leyenda de relaciones UML</span>
-  <span class="cap3-legend-item">
-    <span class="cap3-legend-dot" style="background:rgba(144,205,244,0.6);border:1px solid #90cdf4;"></span>
-    <code style="font-size:0.68rem;color:#90cdf4;">&lt;&lt;include&gt;&gt;</code>&ensp;Inclusión obligatoria
-  </span>
-  <span class="cap3-legend-item">
-    <span class="cap3-legend-dot" style="background:rgba(198,165,232,0.5);border:1px solid #c6a5e8;"></span>
-    <code style="font-size:0.68rem;color:#c6a5e8;">&lt;&lt;extend&gt;&gt;</code>&ensp;Extensión condicional
-  </span>
-  <span class="cap3-legend-item">
-    <span class="cap3-legend-dot" style="background:rgba(212,163,52,0.4);border:1px solid var(--oo-accent);"></span>
-    Generalización de actores (herencia)
-  </span>
-</div>
- 
-<div class="cap3-table-wrap" role="region" aria-label="Tabla de casos de uso e interdependencias">
-  <table class="cap3-table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Caso de Uso</th>
-        <th scope="col">Actor Principal</th>
-        <th scope="col">Relación con otros CU</th>
-        <th scope="col">Descripción de la dependencia</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>CU1</td>
-        <td>Agrega productos al carrito</td>
-        <td>Cliente</td>
-        <td>—</td>
-        <td>Punto de inicio del flujo de compra. El cliente selecciona y acumula productos en el carrito antes de proceder al pedido.</td>
-      </tr>
-      <tr>
-        <td>CU2</td>
-        <td>Realiza Pago</td>
-        <td>Cliente</td>
-        <td><span class="rel-badge rel-badge--include">&lt;&lt;include&gt;&gt;</span> CU3</td>
-        <td>Toda operación de pago requiere obligatoriamente la verificación con la entidad financiera. CU3 se ejecuta siempre que CU2 es invocado.</td>
-      </tr>
-      <tr>
-        <td>CU3</td>
-        <td>Verifica transacción</td>
-        <td>Sistema / Entidad Financiera</td>
-        <td>Incluido por CU2 · Extendido por CU4</td>
-        <td>Proceso interno que consume la API de la pasarela de pago. Activa la generación de factura cuando la verificación resulta exitosa.</td>
-      </tr>
-      <tr>
-        <td>CU4</td>
-        <td>Genera factura</td>
-        <td>Sistema</td>
-        <td><span class="rel-badge rel-badge--extend">&lt;&lt;extend&gt;&gt;</span> CU3</td>
-        <td>La emisión del comprobante fiscal se activa condicionalmente cuando la verificación de la transacción resulta exitosa (postcondición de CU3).</td>
-      </tr>
-      <tr>
-        <td>CU5</td>
-        <td>Hace Pedido</td>
-        <td>Cliente</td>
-        <td><span class="rel-badge rel-badge--include">&lt;&lt;include&gt;&gt;</span> CU8</td>
-        <td>Verificar el stock es un paso obligatorio antes de confirmar cualquier pedido. CU8 se ejecuta como precondición de CU5.</td>
-      </tr>
-      <tr>
-        <td>CU6</td>
-        <td>Envía pedido por WhatsApp</td>
-        <td>Cliente</td>
-        <td><span class="rel-badge rel-badge--extend">&lt;&lt;extend&gt;&gt;</span> CU5</td>
-        <td>Canal alternativo y opcional de comunicación del pedido. Se activa cuando el cliente elige confirmar su pedido mediante mensajería instantánea.</td>
-      </tr>
-      <tr>
-        <td>CU7</td>
-        <td>Modifica Pedido</td>
-        <td>Cliente</td>
-        <td><span class="rel-badge rel-badge--include">&lt;&lt;include&gt;&gt;</span> CU8</td>
-        <td>La modificación de un pedido también requiere verificar la disponibilidad del producto alternativo antes de aplicar el cambio.</td>
-      </tr>
-      <tr>
-        <td>CU8</td>
-        <td>Comprobar disponibilidad</td>
-        <td>Sistema</td>
-        <td>Incluido por CU5, CU7 · <span class="rel-badge rel-badge--extend">&lt;&lt;extend&gt;&gt;</span> CU10</td>
-        <td>Verificación de stock que accede al registro de inventario del día (CU10) gestionado por el Vendedor para confirmar la disponibilidad del producto.</td>
-      </tr>
-      <tr>
-        <td>CU9</td>
-        <td>Recibe confirmación</td>
-        <td>Cliente</td>
-        <td>—</td>
-        <td>Notificación al cliente del estado de su pedido una vez confirmado y procesado. Cierre del flujo transaccional principal.</td>
-      </tr>
-      <tr>
-        <td>CU10</td>
-        <td>Registra inventario del día</td>
-        <td>Vendedor</td>
-        <td>Extendido por CU8</td>
-        <td>El vendedor registra diariamente la disponibilidad de salteñas y bebidas. Este registro es la fuente de datos consultada por CU8 en la verificación de disponibilidad.</td>
-      </tr>
-      <tr>
-        <td>CU11</td>
-        <td>Genera Reporte de Ventas</td>
-        <td>Vendedor</td>
-        <td>—</td>
-        <td>El vendedor accede al módulo de reportes para generar estadísticas de ventas por producto, período y sucursal para la toma de decisiones gerenciales.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
- 
-<span class="cap3-note">
-  <i class="fa-solid fa-circle-info" style="color:var(--oo-accent);font-size:0.7rem;margin-right:3px;"></i>
-  <em>Nota.</em> Los once casos de uso identificados modelan la totalidad de las interacciones funcionales del sistema. Las relaciones de inclusión son obligatorias e incondicionales; las relaciones de extensión son condicionales y se activan únicamente cuando se cumple la condición especificada. Elaboración propia (2025).
-</span>
- 
- 
-<div class="cap3-divider" aria-hidden="true"></div>
- 
- 
-<!-- ══════════════════════════════════════════
-     SECCIÓN 3 — DIAGRAMA DE CLASES
-     ══════════════════════════════════════════ -->
-<h3 class="cap3-h2">
-  <span class="num-badge">3</span>
-  Diagrama de Clases
-</h3>
- 
-<div class="cap3-body">
-  <p>El Diagrama de Clases define la estructura estática del sistema de ventas en línea de la Salteñería Chikis mediante la especificación de las entidades del dominio de negocio, sus atributos, métodos y las relaciones que las interconectan. En el contexto del desarrollo del sistema, este diagrama cumple una <strong>función dual</strong>: por un lado, sirve como modelo conceptual del dominio del problema; por otro, constituye el insumo directo para el diseño del esquema de la base de datos relacional, en el que cada clase se corresponde con una tabla y cada asociación con una restricción de integridad referencial o una tabla intermedia.</p>
-</div>
- 
- 
-<!-- ── FIGURA 8: Diagrama de Clases ── -->
-<figure class="cap3-figure" aria-label="Figura 8 — Diagrama de Clases del Sistema">
- 
-  <div class="cap3-figure-header">
-    <i class="fa-solid fa-cogs" aria-hidden="true"></i>
-    <span class="cap3-figure-header-label">Figura 8</span>
-    <span class="cap3-figure-header-title">Estructura estática · 8 clases de dominio · UML 2.x · Elaboración propia (2025)</span>
-  </div>
- 
-  <div class="cap3-figure-img-wrap">
-    <!-- ► Reemplaza src="img/diagrama-clases.png" con la ruta real de tu imagen ◄ -->
-    <img
-      src="img/clases.png"
-      alt="Diagrama de Clases del Sistema Integral de Ventas en Línea Salteñería Chikis"
-      loading="lazy"
-      onerror="this.parentElement.innerHTML = document.querySelector('#ph-tpl-cl').innerHTML"
-    >
-    <template id="ph-tpl-cl">
-      <div class="cap3-figure-placeholder">
-        <div class="ph-icon"><i class="fa-solid fa-cogs"></i></div>
-        <span class="ph-label">Diagrama de Clases</span>
-        <span class="ph-src">src="img/diagrama-clases.png"</span>
-      </div>
-    </template>
-  </div>
- 
-  <figcaption class="cap3-figcaption">
-    <strong>Figura 8.</strong> Diagrama de Clases — Sistema Integral de Ventas en Línea Salteñería Chikis.
-    La relación de composición (<strong>*--</strong>) entre <em>Pedido</em> y <em>DetallePedido</em> indica dependencia existencial:
-    los registros de DetallePedido son eliminados en cascada si el Pedido padre es eliminado.
-    La relación de agregación (<strong>o--</strong>) entre <em>Pedido</em> y <em>Carrito</em> indica que el Carrito puede existir
-    independientemente del Pedido. Los atributos de tipo y visibilidad han sido especificados conforme a la notación UML 2.x.
-    <em>Elaboración propia (2025).</em>
-  </figcaption>
- 
-</figure>
- 
- 
-<!-- ── DICCIONARIO DE CLASES ── -->
-<h4 class="cap3-h3">3.1 Diccionario de Clases — Atributos, Métodos y Relaciones</h4>
- 
-<div class="cap3-body">
-  <p>Se identifican <strong>ocho clases principales</strong> en el modelo de dominio del sistema. A continuación se documenta el diccionario técnico de cada clase con sus atributos, métodos y relaciones de asociación, composición, agregación y herencia.</p>
-</div>
- 
-<div class="cap3-classes-grid">
- 
-  <!-- ── Clase: Cliente ── -->
-  <div class="cap3-class-card">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">Cliente</span>
-      <span class="cap3-class-badge">Entidad principal</span>
-    </div>
-    <div class="cap3-class-body">
-      <div class="cap3-class-section-label">Atributos</div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>idCliente <span class="type-hint">: int</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>nombre <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>correo <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>contraseña <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>direccion <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>telefono <span class="type-hint">: String</span></div>
- 
-      <div class="cap3-class-section-label">Métodos</div>
-      <div class="cap3-method-item"><span class="visibility">+</span>BuscarCliente() <span class="type-hint">: Cliente</span></div>
-      <div class="cap3-method-item"><span class="visibility">+</span>ContarCliente() <span class="type-hint">: int</span></div>
- 
-      <div class="cap3-class-section-label">Relaciones</div>
-      <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Pedido</span>
-      <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Factura</span>
-    </div>
-  </div>
- 
-  <!-- ── Clase: Administrador ── -->
-  <div class="cap3-class-card">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">Administrador</span>
-      <span class="cap3-class-badge">Gestión del sistema</span>
-    </div>
-    <div class="cap3-class-body">
-      <div class="cap3-class-section-label">Atributos</div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>idAdministrador <span class="type-hint">: int</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>nombre <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>appPaterno <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>apMaterno <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>rol <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>estado <span class="type-hint">: Boolean</span></div>
- 
-      <div class="cap3-class-section-label">Métodos</div>
-      <div class="cap3-method-item" style="color:var(--oo-muted);font-style:italic;font-size:0.72rem;">— Gestión vía panel de administración —</div>
- 
-      <div class="cap3-class-section-label">Relaciones</div>
-      <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Cliente</span>
-    </div>
-  </div>
- 
-  <!-- ── Clase: Factura ── -->
-  <div class="cap3-class-card">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">Factura</span>
-      <span class="cap3-class-badge">Comprobante fiscal</span>
-    </div>
-    <div class="cap3-class-body">
-      <div class="cap3-class-section-label">Atributos</div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>idFactura <span class="type-hint">: int</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>fechaEmision <span class="type-hint">: Date</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>montoTotal <span class="type-hint">: Decimal</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>metodoPago <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>nitCliente <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>nomCliente <span class="type-hint">: String</span></div>
- 
-      <div class="cap3-class-section-label">Métodos</div>
-      <div class="cap3-method-item"><span class="visibility">+</span>EncontrarNomCliFactura() <span class="type-hint">: String</span></div>
- 
-      <div class="cap3-class-section-label">Relaciones</div>
-      <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Pedido</span>
-    </div>
-  </div>
- 
-  <!-- ── Clase: Pedido ── -->
-  <div class="cap3-class-card">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">Pedido</span>
-      <span class="cap3-class-badge">Transacción central</span>
-    </div>
-    <div class="cap3-class-body">
-      <div class="cap3-class-section-label">Atributos</div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>idPedido <span class="type-hint">: int</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>fechaPedido <span class="type-hint">: DateTime</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>estadoPedido <span class="type-hint">: String</span></div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>nroPedido <span class="type-hint">: String</span></div>
- 
-      <div class="cap3-class-section-label">Métodos</div>
-      <div class="cap3-method-item"><span class="visibility">+</span>ContarPedido() <span class="type-hint">: int</span></div>
- 
-      <div class="cap3-class-section-label">Relaciones</div>
-      <span class="cap3-rel-chip cap3-rel-chip--compose"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Composición → DetallePedido</span>
-      <span class="cap3-rel-chip cap3-rel-chip--aggregate"><i class="fa-regular fa-circle" style="font-size:0.5rem;"></i> Agregación → Carrito</span>
-      <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación ← Cliente</span>
-    </div>
-  </div>
- 
-  <!-- ── Clase: Carrito ── -->
-  <div class="cap3-class-card">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">Carrito</span>
-      <span class="cap3-class-badge">Contenedor temporal</span>
-    </div>
-    <div class="cap3-class-body">
-      <div class="cap3-class-section-label">Atributos</div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>idCarrito <span class="type-hint">: int</span></div>
- 
-      <div class="cap3-class-section-label">Descripción funcional</div>
-      <p style="font-size:0.78rem;color:var(--oo-muted);line-height:1.6;margin:0.4rem 0 0.75rem;">
-        Contenedor temporal de productos seleccionados por el cliente antes de confirmar el pedido. Puede existir independientemente del Pedido (relación de agregación débil).
-      </p>
- 
-      <div class="cap3-class-section-label">Relaciones</div>
-      <span class="cap3-rel-chip cap3-rel-chip--aggregate"><i class="fa-regular fa-circle" style="font-size:0.5rem;"></i> Agregado por → Pedido</span>
-      <span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-up" style="font-size:0.6rem;"></i> Contiene → sub_carrito</span>
-    </div>
-  </div>
- 
-  <!-- ── Clase: DetallePedido ── -->
-  <div class="cap3-class-card">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">DetallePedido</span>
-      <span class="cap3-class-badge">Ítem confirmado</span>
-    </div>
-    <div class="cap3-class-body">
-      <div class="cap3-class-section-label">Atributos</div>
-      <div class="cap3-attr-item"><span class="visibility">–</span>cantidad <span class="type-hint">: int</span></div>
- 
-      <div class="cap3-class-section-label">Descripción funcional</div>
-      <p style="font-size:0.78rem;color:var(--oo-muted);line-height:1.6;margin:0.4rem 0 0.75rem;">
-        Modela los ítems individuales de cada pedido confirmado. Mantiene una relación de <strong>composición fuerte</strong> con Pedido: los registros de DetallePedido son eliminados en cascada si el Pedido padre es eliminado del sistema.
-      </p>
- 
-      <div class="cap3-class-section-label">Relaciones</div>
-      <span class="cap3-rel-chip cap3-rel-chip--compose"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Compuesto en → Pedido</span>
-      <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → itemCarrito</span>
-    </div>
-  </div>
- 
-  <!-- ── JERARQUÍA itemCarrito (full-width) ── -->
-  <div class="cap3-class-card cap3-class-card--wide">
-    <div class="cap3-class-header">
-      <span class="cap3-class-name">Jerarquía de Ítems — itemCarrito, sub_carrito y Producto</span>
-      <span class="cap3-class-badge">Herencia UML</span>
-    </div>
-    <div class="cap3-class-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;">
- 
-      <!-- itemCarrito (superclase) -->
-      <div>
-        <div class="cap3-class-section-label" style="margin-top:0;">itemCarrito — Superclase abstracta</div>
-        <div class="cap3-attr-item"><span class="visibility">–</span>cantidad <span class="type-hint">: int</span></div>
-        <p style="font-size:0.77rem;color:var(--oo-muted);line-height:1.6;margin:0.5rem 0 0;">
-          Superclase en la jerarquía de ítems. Define la interfaz común para los ítems del carrito temporal y los productos del catálogo permanente.
-        </p>
-        <div style="margin-top:0.6rem;">
-          <span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-down" style="font-size:0.6rem;"></i> Superclase de: sub_carrito, Producto</span>
-        </div>
-      </div>
- 
-      <!-- sub_carrito (subclase) -->
-      <div>
-        <div class="cap3-class-section-label" style="margin-top:0;">sub_carrito — Subclase</div>
-        <div class="cap3-attr-item"><span class="visibility">–</span>idCarrito <span class="type-hint">: int</span></div>
-        <p style="font-size:0.77rem;color:var(--oo-muted);line-height:1.6;margin:0.5rem 0 0;">
-          Representa los ítems del carrito temporal antes de la confirmación del pedido. Hereda cantidad de itemCarrito e introduce idCarrito como identificador.
-        </p>
-        <div style="margin-top:0.6rem;">
-          <span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-up" style="font-size:0.6rem;"></i> Hereda de → itemCarrito</span>
-        </div>
-      </div>
- 
-      <!-- Producto (subclase) -->
-      <div>
-        <div class="cap3-class-section-label" style="margin-top:0;">Producto — Subclase</div>
-        <div class="cap3-attr-item"><span class="visibility">–</span>tipo <span class="type-hint">: String</span></div>
-        <div class="cap3-attr-item"><span class="visibility">–</span>tamano <span class="type-hint">: String</span></div>
-        <div class="cap3-attr-item"><span class="visibility">–</span>precio <span class="type-hint">: Decimal</span></div>
-        <div class="cap3-attr-item"><span class="visibility">–</span>stock <span class="type-hint">: int</span></div>
-        <p style="font-size:0.77rem;color:var(--oo-muted);line-height:1.6;margin:0.5rem 0 0;">
-          Entidades del catálogo permanente del sistema. Cada registro de Producto representa una salteña o bebida disponible para su comercialización.
-        </p>
-        <div style="margin-top:0.6rem;">
-          <span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-up" style="font-size:0.6rem;"></i> Hereda de → itemCarrito</span>
-        </div>
-      </div>
- 
-    </div>
-  </div>
- 
-</div><!-- /cap3-classes-grid -->
- 
- 
-<!-- ── RELACIONES DEL DIAGRAMA DE CLASES ── -->
-<h4 class="cap3-h3">3.2 Mapa de Relaciones — Diccionario de Asociaciones</h4>
- 
-<div class="cap3-table-wrap" role="region" aria-label="Tabla de relaciones entre clases">
-  <table class="cap3-table">
-    <thead>
-      <tr>
-        <th scope="col">Origen</th>
-        <th scope="col">Tipo de Relación</th>
-        <th scope="col">Destino</th>
-        <th scope="col">Descripción de la relación</th>
-        <th scope="col">Impacto en BD Relacional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Administrador</td>
-        <td><span class="rel-badge rel-badge--include">Asociación</span></td>
-        <td>Cliente</td>
-        <td>El personal administrativo gestiona los registros de clientes del sistema.</td>
-        <td>FK en tabla Cliente → id_administrador</td>
-      </tr>
-      <tr>
-        <td>Cliente</td>
-        <td><span class="rel-badge rel-badge--include">Asociación</span></td>
-        <td>Pedido</td>
-        <td>Cada pedido es originado por un cliente registrado. Integridad referencial directa.</td>
-        <td>FK en tabla Pedido → id_cliente</td>
-      </tr>
-      <tr>
-        <td>Factura</td>
-        <td><span class="rel-badge rel-badge--include">Asociación</span></td>
-        <td>Pedido</td>
-        <td>Cada comprobante fiscal se vincula al pedido que lo origina.</td>
-        <td>FK en tabla Factura → id_pedido</td>
-      </tr>
-      <tr>
-        <td>Pedido</td>
-        <td><span class="rel-badge rel-badge--extend" style="background:rgba(252,129,129,0.1);border-color:rgba(252,129,129,0.25);color:#fbb6b6;">Composición (*--)</span></td>
-        <td>DetallePedido</td>
-        <td>Los ítems del pedido tienen dependencia existencial respecto del pedido padre. Eliminación en cascada.</td>
-        <td>FK en tabla DetallePedido → id_pedido (ON DELETE CASCADE)</td>
-      </tr>
-      <tr>
-        <td>Pedido</td>
-        <td><span class="rel-badge rel-badge--extend" style="background:rgba(246,173,85,0.1);border-color:rgba(246,173,85,0.25);color:#f6c05e;">Agregación (o--)</span></td>
-        <td>Carrito</td>
-        <td>El carrito puede existir independientemente del pedido. Vinculación débil en el momento de la confirmación.</td>
-        <td>FK opcional en tabla Pedido → id_carrito</td>
-      </tr>
-      <tr>
-        <td>DetallePedido</td>
-        <td><span class="rel-badge rel-badge--include">Asociación</span></td>
-        <td>itemCarrito</td>
-        <td>Los ítems confirmados del pedido se originan en los ítems del carrito temporal.</td>
-        <td>FK en tabla DetallePedido → id_item_carrito</td>
-      </tr>
-      <tr>
-        <td>sub_carrito</td>
-        <td><span class="rel-badge rel-badge--extend" style="background:rgba(144,205,244,0.1);border-color:rgba(144,205,244,0.25);color:#90cdf4;">Generalización ↑</span></td>
-        <td>itemCarrito</td>
-        <td>Herencia de la superclase abstracta itemCarrito. sub_carrito extiende el ítem genérico con idCarrito.</td>
-        <td>Tabla única (single-table inheritance) o tabla derivada</td>
-      </tr>
-      <tr>
-        <td>Producto</td>
-        <td><span class="rel-badge rel-badge--extend" style="background:rgba(144,205,244,0.1);border-color:rgba(144,205,244,0.25);color:#90cdf4;">Generalización ↑</span></td>
-        <td>itemCarrito</td>
-        <td>Herencia de la superclase abstracta itemCarrito. Producto incorpora tipo, tamaño, precio y stock del catálogo.</td>
-        <td>Tabla Producto con atributos propios + herencia de cantidad</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
- 
-<span class="cap3-note">
-  <i class="fa-solid fa-circle-info" style="color:var(--oo-accent);font-size:0.7rem;margin-right:3px;"></i>
-  <em>Nota.</em> La relación de composición (<strong>*--</strong>) entre <em>Pedido</em> y <em>DetallePedido</em> establece que los registros de DetallePedido no pueden existir sin su Pedido padre, lo que se implementa en la base de datos mediante la cláusula <code>ON DELETE CASCADE</code>. La relación de agregación (<strong>o--</strong>) entre <em>Pedido</em> y <em>Carrito</em> indica que el Carrito mantiene existencia independiente. Los atributos de visibilidad siguen la notación UML 2.x: (<strong>–</strong>) privado, (<strong>+</strong>) público, (<strong>#</strong>) protegido. Elaboración propia (2025).
-</span>
- 
- 
-<!-- ── CIERRE DEL CAPÍTULO ── -->
-<div class="cap3-divider" aria-hidden="true"></div>
- 
-<div class="cap3-callout" role="note" style="margin-bottom:1rem;">
-  <div class="cap3-callout-icon"><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i></div>
-  <div class="cap3-callout-body">
-    <span class="cap3-callout-label">Referencias — Capítulo III</span>
-    <p>
-      Booch, G. (1994). <em>Object-oriented analysis and design with applications</em> (2.ª ed.). Benjamin/Cummings. &ensp;·&ensp;
-      Booch, G., Rumbaugh, J., y Jacobson, I. (1999). <em>The unified modeling language user guide</em>. Addison-Wesley. &ensp;·&ensp;
-      Jacobson, I. (1992). <em>Object-oriented software engineering: A use case driven approach</em>. Addison-Wesley. &ensp;·&ensp;
-      Object Management Group. (2017). <em>OMG Unified Modeling Language, version 2.5.1</em>. <a href="https://www.omg.org/spec/UML/2.5.1" style="color:var(--oo-accent);" target="_blank" rel="noopener">omg.org/spec/UML/2.5.1</a> &ensp;·&ensp;
-      Rumbaugh, J. et al. (1991). <em>Object-oriented modeling and design</em>. Prentice-Hall.
-    </p>
-  </div>
-</div>
-          <!-- Sub-anchor placeholder para clases -->
-          <div id="clases-oo" style="height:1px;margin-top:1rem"></div>
+
+          <div class="cap3-portada">
+            <div class="cap3-portada-glow" aria-hidden="true"></div>
+            <div class="cap3-portada-inner">
+              <div class="cap3-cap-label">
+                <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                Capítulo III
+              </div>
+              <h2 class="cap3-portada-title">Análisis y Diseño<br><em>Orientado a Objetos</em></h2>
+              <p class="cap3-portada-sub">Modelado UML del sistema integral de ventas en línea de la Salteñería Chikis mediante el Diagrama de Casos de Uso y el Diagrama de Clases, elaborados conforme al estándar ISO/IEC&nbsp;19505 (UML&nbsp;2.x) del Object Management Group.</p>
+              <div class="cap3-portada-pills">
+                <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> UML 2.x · ISO/IEC 19505</span>
+                <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> 11 Casos de Uso identificados</span>
+                <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> 8 Clases de dominio</span>
+                <span class="cap3-pill"><i class="fa-solid fa-circle-dot"></i> 4 Actores del sistema</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cap3-h2"><span class="num-badge">1</span>Introducción al Paradigma Orientado a Objetos</h3>
+          <div class="cap3-body">
+            <p>El análisis y diseño orientado a objetos (AOO/DOO) es un paradigma de ingeniería de software que modela los sistemas de información como conjuntos de objetos que encapsulan datos (atributos) y comportamiento (métodos), interactuando entre sí a través del envío de mensajes. A diferencia del paradigma estructurado —centrado en los flujos de datos y los procesos que los transforman—, el paradigma orientado a objetos organiza el conocimiento del sistema en torno a las entidades del dominio del problema, facilitando la comprensión, la modularidad, la reutilización y el mantenimiento del código.</p>
+            <div class="cap3-callout" role="note">
+              <div class="cap3-callout-icon"><i class="fa-solid fa-landmark" aria-hidden="true"></i></div>
+              <div class="cap3-callout-body">
+                <span class="cap3-callout-label">Fundamento Académico — Booch, Rumbaugh &amp; Jacobson (1999)</span>
+                <p>El paradigma fue formalizado por Grady Booch (1994), James Rumbaugh (1991) e Ivar Jacobson (1992), cuyas metodologías individuales convergieron en el <strong>Proceso Unificado de Rational (RUP)</strong> y dieron origen al <strong>Lenguaje Unificado de Modelado (UML)</strong>, estándar ISO/IEC 19505 gestionado por el Object Management Group (OMG).</p>
+              </div>
+            </div>
+            <p>UML define un conjunto de diagramas para modelar sistemas de software desde distintas perspectivas: los <em>diagramas de casos de uso</em> modelan las interacciones funcionales entre actores y el sistema; los <em>diagramas de clases</em> modelan la estructura estática del sistema; los <em>diagramas de secuencia</em> modelan la dinámica de interacción entre objetos; y los <em>diagramas de actividades</em> modelan los flujos de control, entre otros (Object Management Group, 2017).</p>
+            <p>Para el sistema integral de ventas en línea de la Salteñería Chikis, el análisis orientado a objetos se materializa en dos artefactos UML fundamentales: el <strong>Modelo de Casos de Uso del Sistema (MCU)</strong> y el <strong>Diagrama de Clases</strong>.</p>
+          </div>
+
+          <div class="cap3-divider" aria-hidden="true"></div>
+
+          <!-- id="casos-uso-oo" para el anchor de la sidebar -->
+          <h3 class="cap3-h2" id="casos-uso-oo"><span class="num-badge">2</span>Modelo de Casos de Uso del Sistema</h3>
+          <div class="cap3-body">
+            <p>El Diagrama de Casos de Uso representa las interacciones funcionales entre los actores externos del sistema y las funcionalidades —denominadas casos de uso— que el sistema provee. Siguiendo la notación UML definida por Jacobson et al. (1999), un <strong>caso de uso</strong> especifica una secuencia de acciones que el sistema realiza para producir un resultado de valor para un actor específico.</p>
+            <p>Las relaciones entre casos de uso pueden ser de <strong>inclusión</strong> (<code>&lt;&lt;include&gt;&gt;</code>), cuando un caso de uso incorpora obligatoriamente el comportamiento de otro, o de <strong>extensión</strong> (<code>&lt;&lt;extend&gt;&gt;</code>), cuando un caso de uso añade comportamiento opcional a otro bajo condiciones específicas.</p>
+          </div>
+
+          <figure class="cap3-figure" aria-label="Figura 7 — Diagrama de Casos de Uso del Sistema">
+            <div class="cap3-figure-header">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+              <span class="cap3-figure-header-label">Figura 7</span>
+              <span class="cap3-figure-header-title">UML 2.x · Notación Jacobson (1999) · Elaboración propia (2025)</span>
+            </div>
+            <div class="cap3-figure-img-wrap">
+              <img src="img/casos.png" alt="Diagrama de Casos de Uso del Sistema Integral de Ventas en Línea Salteñería Chikis" loading="lazy" onerror="this.parentElement.innerHTML = document.querySelector('#ph-tpl-cu').innerHTML">
+              <template id="ph-tpl-cu">
+                <div class="cap3-figure-placeholder">
+                  <div class="ph-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                  <span class="ph-label">Diagrama de Casos de Uso</span>
+                  <span class="ph-src">src="img/casos.png"</span>
+                </div>
+              </template>
+            </div>
+            <figcaption class="cap3-figcaption">
+              <strong>Figura 7.</strong> Diagrama de Casos de Uso — Sistema Integral de Ventas en Línea Salteñería Chikis.
+              Las líneas punteadas con etiqueta <strong>&lt;&lt;include&gt;&gt;</strong> representan relaciones de inclusión obligatoria; las etiquetadas <strong>&lt;&lt;extend&gt;&gt;</strong> representan extensiones condicionales.
+              <em>Elaboración propia (2025).</em>
+            </figcaption>
+          </figure>
+
+          <h4 class="cap3-h3">2.1 Actores del Sistema</h4>
+          <div class="cap3-body">
+            <p>Para el sistema de ventas en línea de la Salteñería Chikis se identifican <strong>cuatro actores</strong>, organizados en una jerarquía de generalización que refleja la herencia de propiedades comunes.</p>
+          </div>
+
+          <div class="cap3-actors-grid" role="list">
+            <div class="cap3-actor-card" role="listitem">
+              <div class="cap3-actor-head">
+                <div class="cap3-actor-icon"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+                <div><div class="cap3-actor-name">Persona</div><div class="cap3-actor-type">Actor abstracto · Superclase de generalización</div></div>
+              </div>
+              <p class="cap3-actor-desc">Clase abstracta UML que generaliza los rasgos comunes de Cliente y Vendedor en el modelo de herencia de actores. No interactúa directamente con casos de uso, sino que proporciona la estructura base para los actores concretos derivados.</p>
+              <div class="cap3-actor-cu-list">
+                <div class="cap3-actor-cu-item">Superclase de: <strong>Cliente</strong> y <strong>Vendedor</strong></div>
+                <div class="cap3-actor-cu-item">Patrón UML: Generalización de actores (herencia)</div>
+              </div>
+            </div>
+            <div class="cap3-actor-card" role="listitem">
+              <div class="cap3-actor-head">
+                <div class="cap3-actor-icon"><i class="fa-solid fa-user" aria-hidden="true"></i></div>
+                <div><div class="cap3-actor-name">Cliente</div><div class="cap3-actor-type">Actor primario · Usuario del canal de ventas</div></div>
+              </div>
+              <p class="cap3-actor-desc">Usuario primario del canal de ventas en línea. Accede al catálogo, gestiona su carrito, realiza pagos y efectúa o modifica pedidos. Subclase de la superclase abstracta Persona.</p>
+              <div class="cap3-actor-cu-list">
+                <div class="cap3-actor-cu-item"><strong>CU1</strong> — Agrega productos al carrito</div>
+                <div class="cap3-actor-cu-item"><strong>CU2</strong> — Realiza Pago</div>
+                <div class="cap3-actor-cu-item"><strong>CU5</strong> — Hace Pedido</div>
+                <div class="cap3-actor-cu-item"><strong>CU7</strong> — Modifica Pedido</div>
+                <div class="cap3-actor-cu-item"><strong>CU9</strong> — Recibe confirmación</div>
+              </div>
+            </div>
+            <div class="cap3-actor-card" role="listitem">
+              <div class="cap3-actor-head">
+                <div class="cap3-actor-icon"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+                <div><div class="cap3-actor-name">Vendedor</div><div class="cap3-actor-type">Actor secundario · Personal de gestión</div></div>
+              </div>
+              <p class="cap3-actor-desc">Responsable de la gestión del inventario diario y de la generación de reportes de ventas. Subclase de la superclase abstracta Persona.</p>
+              <div class="cap3-actor-cu-list">
+                <div class="cap3-actor-cu-item"><strong>CU10</strong> — Registra inventario del día</div>
+                <div class="cap3-actor-cu-item"><strong>CU11</strong> — Genera Reporte de Ventas</div>
+              </div>
+            </div>
+            <div class="cap3-actor-card" role="listitem">
+              <div class="cap3-actor-head">
+                <div class="cap3-actor-icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></div>
+                <div><div class="cap3-actor-name">Entidad Financiera</div><div class="cap3-actor-type">Actor secundario · Pasarela de pago electrónico</div></div>
+              </div>
+              <p class="cap3-actor-desc">Sistema externo que representa la pasarela de pago electrónico. Participa en los procesos de verificación de transacciones, siendo convocada por el sistema cada vez que el Cliente inicia un proceso de pago.</p>
+              <div class="cap3-actor-cu-list">
+                <div class="cap3-actor-cu-item"><strong>CU3</strong> — Verifica transacción (actor secundario)</div>
+                <div class="cap3-actor-cu-item">Protocolo: API financiera (QR / débito-crédito)</div>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="cap3-h3">2.2 Casos de Uso e Interdependencias</h4>
+          <div class="cap3-body">
+            <p>Los once casos de uso identificados modelan las dependencias funcionales del sistema mediante relaciones de inclusión y extensión.</p>
+          </div>
+
+          <div class="cap3-legend" role="note" aria-label="Leyenda de relaciones entre casos de uso">
+            <span class="cap3-legend-title">Leyenda de relaciones UML</span>
+            <span class="cap3-legend-item"><span class="cap3-legend-dot" style="background:rgba(144,205,244,0.6);border:1px solid #90cdf4;"></span><code style="font-size:0.68rem;color:#90cdf4;">&lt;&lt;include&gt;&gt;</code>&ensp;Inclusión obligatoria</span>
+            <span class="cap3-legend-item"><span class="cap3-legend-dot" style="background:rgba(198,165,232,0.5);border:1px solid #c6a5e8;"></span><code style="font-size:0.68rem;color:#c6a5e8;">&lt;&lt;extend&gt;&gt;</code>&ensp;Extensión condicional</span>
+            <span class="cap3-legend-item"><span class="cap3-legend-dot" style="background:rgba(212,163,52,0.4);border:1px solid var(--oo-accent);"></span>Generalización de actores (herencia)</span>
+          </div>
+
+          <div class="cap3-table-wrap" role="region" aria-label="Tabla de casos de uso e interdependencias">
+            <table class="cap3-table">
+              <thead>
+                <tr><th>ID</th><th>Caso de Uso</th><th>Actor Principal</th><th>Relación con otros CU</th><th>Descripción de la dependencia</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>CU1</td><td>Agrega productos al carrito</td><td>Cliente</td><td>—</td><td>Punto de inicio del flujo de compra. El cliente selecciona y acumula productos en el carrito antes de proceder al pedido.</td></tr>
+                <tr><td>CU2</td><td>Realiza Pago</td><td>Cliente</td><td><span class="rel-badge rel-badge--include">&lt;&lt;include&gt;&gt;</span> CU3</td><td>Toda operación de pago requiere obligatoriamente la verificación con la entidad financiera. CU3 se ejecuta siempre que CU2 es invocado.</td></tr>
+                <tr><td>CU3</td><td>Verifica transacción</td><td>Sistema / Entidad Financiera</td><td>Incluido por CU2 · Extendido por CU4</td><td>Proceso interno que consume la API de la pasarela de pago. Activa la generación de factura cuando la verificación resulta exitosa.</td></tr>
+                <tr><td>CU4</td><td>Genera factura</td><td>Sistema</td><td><span class="rel-badge rel-badge--extend">&lt;&lt;extend&gt;&gt;</span> CU3</td><td>La emisión del comprobante fiscal se activa condicionalmente cuando la verificación de la transacción resulta exitosa (postcondición de CU3).</td></tr>
+                <tr><td>CU5</td><td>Hace Pedido</td><td>Cliente</td><td><span class="rel-badge rel-badge--include">&lt;&lt;include&gt;&gt;</span> CU8</td><td>Verificar el stock es un paso obligatorio antes de confirmar cualquier pedido. CU8 se ejecuta como precondición de CU5.</td></tr>
+                <tr><td>CU6</td><td>Envía pedido por WhatsApp</td><td>Cliente</td><td><span class="rel-badge rel-badge--extend">&lt;&lt;extend&gt;&gt;</span> CU5</td><td>Canal alternativo y opcional de comunicación del pedido. Se activa cuando el cliente elige confirmar su pedido mediante mensajería instantánea.</td></tr>
+                <tr><td>CU7</td><td>Modifica Pedido</td><td>Cliente</td><td><span class="rel-badge rel-badge--include">&lt;&lt;include&gt;&gt;</span> CU8</td><td>La modificación de un pedido también requiere verificar la disponibilidad del producto alternativo antes de aplicar el cambio.</td></tr>
+                <tr><td>CU8</td><td>Comprobar disponibilidad</td><td>Sistema</td><td>Incluido por CU5, CU7 · <span class="rel-badge rel-badge--extend">&lt;&lt;extend&gt;&gt;</span> CU10</td><td>Verificación de stock que accede al registro de inventario del día (CU10) gestionado por el Vendedor para confirmar la disponibilidad del producto.</td></tr>
+                <tr><td>CU9</td><td>Recibe confirmación</td><td>Cliente</td><td>—</td><td>Notificación al cliente del estado de su pedido una vez confirmado y procesado. Cierre del flujo transaccional principal.</td></tr>
+                <tr><td>CU10</td><td>Registra inventario del día</td><td>Vendedor</td><td>Extendido por CU8</td><td>El vendedor registra diariamente la disponibilidad de salteñas y bebidas. Este registro es la fuente de datos consultada por CU8 en la verificación de disponibilidad.</td></tr>
+                <tr><td>CU11</td><td>Genera Reporte de Ventas</td><td>Vendedor</td><td>—</td><td>El vendedor accede al módulo de reportes para generar estadísticas de ventas por producto, período y sucursal para la toma de decisiones gerenciales.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <span class="cap3-note">
+            <i class="fa-solid fa-circle-info" style="color:var(--oo-accent);font-size:0.7rem;margin-right:3px;"></i>
+            <em>Nota.</em> Los once casos de uso identificados modelan la totalidad de las interacciones funcionales del sistema. Elaboración propia (2025).
+          </span>
+
+          <div class="cap3-divider" aria-hidden="true"></div>
+
+          <!-- id="clases-oo" para el anchor de la sidebar -->
+          <h3 class="cap3-h2" id="clases-oo"><span class="num-badge">3</span>Diagrama de Clases</h3>
+          <div class="cap3-body">
+            <p>El Diagrama de Clases define la estructura estática del sistema de ventas en línea de la Salteñería Chikis mediante la especificación de las entidades del dominio de negocio, sus atributos, métodos y las relaciones que las interconectan.</p>
+          </div>
+
+          <figure class="cap3-figure" aria-label="Figura 8 — Diagrama de Clases del Sistema">
+            <div class="cap3-figure-header">
+              <i class="fa-solid fa-cogs" aria-hidden="true"></i>
+              <span class="cap3-figure-header-label">Figura 8</span>
+              <span class="cap3-figure-header-title">Estructura estática · 8 clases de dominio · UML 2.x · Elaboración propia (2025)</span>
+            </div>
+            <div class="cap3-figure-img-wrap">
+              <img src="img/clases.png" alt="Diagrama de Clases del Sistema Integral de Ventas en Línea Salteñería Chikis" loading="lazy" onerror="this.parentElement.innerHTML = document.querySelector('#ph-tpl-cl').innerHTML">
+              <template id="ph-tpl-cl">
+                <div class="cap3-figure-placeholder">
+                  <div class="ph-icon"><i class="fa-solid fa-cogs"></i></div>
+                  <span class="ph-label">Diagrama de Clases</span>
+                  <span class="ph-src">src="img/clases.png"</span>
+                </div>
+              </template>
+            </div>
+            <figcaption class="cap3-figcaption">
+              <strong>Figura 8.</strong> Diagrama de Clases — Sistema Integral de Ventas en Línea Salteñería Chikis.
+              La relación de composición (<strong>*--</strong>) entre <em>Pedido</em> y <em>DetallePedido</em> indica dependencia existencial.
+              <em>Elaboración propia (2025).</em>
+            </figcaption>
+          </figure>
+
+          <h4 class="cap3-h3">3.1 Diccionario de Clases — Atributos, Métodos y Relaciones</h4>
+          <div class="cap3-body">
+            <p>Se identifican <strong>ocho clases principales</strong> en el modelo de dominio del sistema.</p>
+          </div>
+
+          <div class="cap3-classes-grid">
+            <div class="cap3-class-card">
+              <div class="cap3-class-header"><span class="cap3-class-name">Cliente</span><span class="cap3-class-badge">Entidad principal</span></div>
+              <div class="cap3-class-body">
+                <div class="cap3-class-section-label">Atributos</div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>idCliente <span class="type-hint">: int</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>nombre <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>correo <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>contraseña <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>direccion <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>telefono <span class="type-hint">: String</span></div>
+                <div class="cap3-class-section-label">Métodos</div>
+                <div class="cap3-method-item"><span class="visibility">+</span>BuscarCliente() <span class="type-hint">: Cliente</span></div>
+                <div class="cap3-method-item"><span class="visibility">+</span>ContarCliente() <span class="type-hint">: int</span></div>
+                <div class="cap3-class-section-label">Relaciones</div>
+                <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Pedido</span>
+                <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Factura</span>
+              </div>
+            </div>
+            <div class="cap3-class-card">
+              <div class="cap3-class-header"><span class="cap3-class-name">Administrador</span><span class="cap3-class-badge">Gestión del sistema</span></div>
+              <div class="cap3-class-body">
+                <div class="cap3-class-section-label">Atributos</div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>idAdministrador <span class="type-hint">: int</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>nombre <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>appPaterno <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>apMaterno <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>rol <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>estado <span class="type-hint">: Boolean</span></div>
+                <div class="cap3-class-section-label">Relaciones</div>
+                <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Cliente</span>
+              </div>
+            </div>
+            <div class="cap3-class-card">
+              <div class="cap3-class-header"><span class="cap3-class-name">Factura</span><span class="cap3-class-badge">Comprobante fiscal</span></div>
+              <div class="cap3-class-body">
+                <div class="cap3-class-section-label">Atributos</div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>idFactura <span class="type-hint">: int</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>fechaEmision <span class="type-hint">: Date</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>montoTotal <span class="type-hint">: Decimal</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>metodoPago <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>nitCliente <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>nomCliente <span class="type-hint">: String</span></div>
+                <div class="cap3-class-section-label">Métodos</div>
+                <div class="cap3-method-item"><span class="visibility">+</span>EncontrarNomCliFactura() <span class="type-hint">: String</span></div>
+                <div class="cap3-class-section-label">Relaciones</div>
+                <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → Pedido</span>
+              </div>
+            </div>
+            <div class="cap3-class-card">
+              <div class="cap3-class-header"><span class="cap3-class-name">Pedido</span><span class="cap3-class-badge">Transacción central</span></div>
+              <div class="cap3-class-body">
+                <div class="cap3-class-section-label">Atributos</div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>idPedido <span class="type-hint">: int</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>fechaPedido <span class="type-hint">: DateTime</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>estadoPedido <span class="type-hint">: String</span></div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>nroPedido <span class="type-hint">: String</span></div>
+                <div class="cap3-class-section-label">Métodos</div>
+                <div class="cap3-method-item"><span class="visibility">+</span>ContarPedido() <span class="type-hint">: int</span></div>
+                <div class="cap3-class-section-label">Relaciones</div>
+                <span class="cap3-rel-chip cap3-rel-chip--compose"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Composición → DetallePedido</span>
+                <span class="cap3-rel-chip cap3-rel-chip--aggregate"><i class="fa-regular fa-circle" style="font-size:0.5rem;"></i> Agregación → Carrito</span>
+                <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación ← Cliente</span>
+              </div>
+            </div>
+            <div class="cap3-class-card">
+              <div class="cap3-class-header"><span class="cap3-class-name">Carrito</span><span class="cap3-class-badge">Contenedor temporal</span></div>
+              <div class="cap3-class-body">
+                <div class="cap3-class-section-label">Atributos</div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>idCarrito <span class="type-hint">: int</span></div>
+                <div class="cap3-class-section-label">Descripción funcional</div>
+                <p style="font-size:0.78rem;color:var(--oo-muted);line-height:1.6;margin:0.4rem 0 0.75rem;">Contenedor temporal de productos seleccionados por el cliente antes de confirmar el pedido. Puede existir independientemente del Pedido (relación de agregación débil).</p>
+                <div class="cap3-class-section-label">Relaciones</div>
+                <span class="cap3-rel-chip cap3-rel-chip--aggregate"><i class="fa-regular fa-circle" style="font-size:0.5rem;"></i> Agregado por → Pedido</span>
+                <span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-up" style="font-size:0.6rem;"></i> Contiene → sub_carrito</span>
+              </div>
+            </div>
+            <div class="cap3-class-card">
+              <div class="cap3-class-header"><span class="cap3-class-name">DetallePedido</span><span class="cap3-class-badge">Ítem confirmado</span></div>
+              <div class="cap3-class-body">
+                <div class="cap3-class-section-label">Atributos</div>
+                <div class="cap3-attr-item"><span class="visibility">–</span>cantidad <span class="type-hint">: int</span></div>
+                <div class="cap3-class-section-label">Descripción funcional</div>
+                <p style="font-size:0.78rem;color:var(--oo-muted);line-height:1.6;margin:0.4rem 0 0.75rem;">Modela los ítems individuales de cada pedido confirmado. Mantiene una relación de <strong>composición fuerte</strong> con Pedido: los registros de DetallePedido son eliminados en cascada si el Pedido padre es eliminado del sistema.</p>
+                <div class="cap3-class-section-label">Relaciones</div>
+                <span class="cap3-rel-chip cap3-rel-chip--compose"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Compuesto en → Pedido</span>
+                <span class="cap3-rel-chip cap3-rel-chip--assoc"><i class="fa-solid fa-right-left" style="font-size:0.6rem;"></i> Asociación → itemCarrito</span>
+              </div>
+            </div>
+            <div class="cap3-class-card cap3-class-card--wide">
+              <div class="cap3-class-header"><span class="cap3-class-name">Jerarquía de Ítems — itemCarrito, sub_carrito y Producto</span><span class="cap3-class-badge">Herencia UML</span></div>
+              <div class="cap3-class-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;">
+                <div>
+                  <div class="cap3-class-section-label" style="margin-top:0;">itemCarrito — Superclase abstracta</div>
+                  <div class="cap3-attr-item"><span class="visibility">–</span>cantidad <span class="type-hint">: int</span></div>
+                  <p style="font-size:0.77rem;color:var(--oo-muted);line-height:1.6;margin:0.5rem 0 0;">Superclase en la jerarquía de ítems. Define la interfaz común para los ítems del carrito temporal y los productos del catálogo permanente.</p>
+                  <div style="margin-top:0.6rem;"><span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-down" style="font-size:0.6rem;"></i> Superclase de: sub_carrito, Producto</span></div>
+                </div>
+                <div>
+                  <div class="cap3-class-section-label" style="margin-top:0;">sub_carrito — Subclase</div>
+                  <div class="cap3-attr-item"><span class="visibility">–</span>idCarrito <span class="type-hint">: int</span></div>
+                  <p style="font-size:0.77rem;color:var(--oo-muted);line-height:1.6;margin:0.5rem 0 0;">Representa los ítems del carrito temporal antes de la confirmación del pedido. Hereda cantidad de itemCarrito e introduce idCarrito como identificador.</p>
+                  <div style="margin-top:0.6rem;"><span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-up" style="font-size:0.6rem;"></i> Hereda de → itemCarrito</span></div>
+                </div>
+                <div>
+                  <div class="cap3-class-section-label" style="margin-top:0;">Producto — Subclase</div>
+                  <div class="cap3-attr-item"><span class="visibility">–</span>tipo <span class="type-hint">: String</span></div>
+                  <div class="cap3-attr-item"><span class="visibility">–</span>tamano <span class="type-hint">: String</span></div>
+                  <div class="cap3-attr-item"><span class="visibility">–</span>precio <span class="type-hint">: Decimal</span></div>
+                  <div class="cap3-attr-item"><span class="visibility">–</span>stock <span class="type-hint">: int</span></div>
+                  <p style="font-size:0.77rem;color:var(--oo-muted);line-height:1.6;margin:0.5rem 0 0;">Entidades del catálogo permanente del sistema. Cada registro de Producto representa una salteña o bebida disponible para su comercialización.</p>
+                  <div style="margin-top:0.6rem;"><span class="cap3-rel-chip cap3-rel-chip--inherit"><i class="fa-solid fa-arrow-up" style="font-size:0.6rem;"></i> Hereda de → itemCarrito</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="cap3-h3">3.2 Mapa de Relaciones — Diccionario de Asociaciones</h4>
+          <div class="cap3-table-wrap" role="region" aria-label="Tabla de relaciones entre clases">
+            <table class="cap3-table">
+              <thead>
+                <tr><th>Origen</th><th>Tipo de Relación</th><th>Destino</th><th>Descripción de la relación</th><th>Impacto en BD Relacional</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Administrador</td><td><span class="rel-badge rel-badge--include">Asociación</span></td><td>Cliente</td><td>El personal administrativo gestiona los registros de clientes del sistema.</td><td>FK en tabla Cliente → id_administrador</td></tr>
+                <tr><td>Cliente</td><td><span class="rel-badge rel-badge--include">Asociación</span></td><td>Pedido</td><td>Cada pedido es originado por un cliente registrado. Integridad referencial directa.</td><td>FK en tabla Pedido → id_cliente</td></tr>
+                <tr><td>Factura</td><td><span class="rel-badge rel-badge--include">Asociación</span></td><td>Pedido</td><td>Cada comprobante fiscal se vincula al pedido que lo origina.</td><td>FK en tabla Factura → id_pedido</td></tr>
+                <tr><td>Pedido</td><td><span class="rel-badge rel-badge--extend" style="background:rgba(252,129,129,0.1);border-color:rgba(252,129,129,0.25);color:#fbb6b6;">Composición (*--)</span></td><td>DetallePedido</td><td>Los ítems del pedido tienen dependencia existencial respecto del pedido padre. Eliminación en cascada.</td><td>FK en tabla DetallePedido → id_pedido (ON DELETE CASCADE)</td></tr>
+                <tr><td>Pedido</td><td><span class="rel-badge rel-badge--extend" style="background:rgba(246,173,85,0.1);border-color:rgba(246,173,85,0.25);color:#f6c05e;">Agregación (o--)</span></td><td>Carrito</td><td>El carrito puede existir independientemente del pedido. Vinculación débil en el momento de la confirmación.</td><td>FK opcional en tabla Pedido → id_carrito</td></tr>
+                <tr><td>DetallePedido</td><td><span class="rel-badge rel-badge--include">Asociación</span></td><td>itemCarrito</td><td>Los ítems confirmados del pedido se originan en los ítems del carrito temporal.</td><td>FK en tabla DetallePedido → id_item_carrito</td></tr>
+                <tr><td>sub_carrito</td><td><span class="rel-badge rel-badge--extend" style="background:rgba(144,205,244,0.1);border-color:rgba(144,205,244,0.25);color:#90cdf4;">Generalización ↑</span></td><td>itemCarrito</td><td>Herencia de la superclase abstracta itemCarrito. sub_carrito extiende el ítem genérico con idCarrito.</td><td>Tabla única (single-table inheritance) o tabla derivada</td></tr>
+                <tr><td>Producto</td><td><span class="rel-badge rel-badge--extend" style="background:rgba(144,205,244,0.1);border-color:rgba(144,205,244,0.25);color:#90cdf4;">Generalización ↑</span></td><td>itemCarrito</td><td>Herencia de la superclase abstracta itemCarrito. Producto incorpora tipo, tamaño, precio y stock del catálogo.</td><td>Tabla Producto con atributos propios + herencia de cantidad</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <span class="cap3-note">
+            <i class="fa-solid fa-circle-info" style="color:var(--oo-accent);font-size:0.7rem;margin-right:3px;"></i>
+            <em>Nota.</em> La relación de composición (<strong>*--</strong>) entre <em>Pedido</em> y <em>DetallePedido</em> establece que los registros de DetallePedido no pueden existir sin su Pedido padre, implementado mediante <code>ON DELETE CASCADE</code>. Elaboración propia (2025).
+          </span>
+
+          <div class="cap3-divider" aria-hidden="true"></div>
+
+          <div class="cap3-callout" role="note" style="margin-bottom:1rem;">
+            <div class="cap3-callout-icon"><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i></div>
+            <div class="cap3-callout-body">
+              <span class="cap3-callout-label">Referencias — Capítulo III</span>
+              <p>Booch, G. (1994). <em>Object-oriented analysis and design with applications</em> (2.ª ed.). Benjamin/Cummings. &ensp;·&ensp; Booch, G., Rumbaugh, J., y Jacobson, I. (1999). <em>The unified modeling language user guide</em>. Addison-Wesley. &ensp;·&ensp; Jacobson, I. (1992). <em>Object-oriented software engineering: A use case driven approach</em>. Addison-Wesley. &ensp;·&ensp; Object Management Group. (2017). <em>OMG Unified Modeling Language, version 2.5.1</em>. <a href="https://www.omg.org/spec/UML/2.5.1" style="color:var(--oo-accent);" target="_blank" rel="noopener">omg.org/spec/UML/2.5.1</a> &ensp;·&ensp; Rumbaugh, J. et al. (1991). <em>Object-oriented modeling and design</em>. Prentice-Hall.</p>
+            </div>
+          </div>
+
         </div>
       </article>
 
-      <!-- Marco Teórico anchor (para el dropdown que apunta a informe.html#marco-teorico) -->
-      <div id="marco-teorico" style="height:1px"></div>
-
     </main>
-    <!-- /doc-content -->
-
   </div>
-  <!-- /doc-layout -->
 
-
-  <!-- ═══════════════════════════════════════════════
-       FOOTER COMPACTO
-  ════════════════════════════════════════════════ -->
   <footer id="contacto">
     <div class="footer-bottom">
-      <p class="footer-copy">
-        © 2026 Salteñería Chikis · Informe Técnico — Sistema Integral de Ventas · UMSA Carrera de Informática
-      </p>
+      <p class="footer-copy">© 2026 Salteñería Chikis · Informe Técnico — Sistema Integral de Ventas · UMSA Carrera de Informática</p>
       <p class="footer-badge">HECHO EN BOLIVIA 🇧🇴</p>
     </div>
   </footer>
 
-
-  <!-- ═══════════════════════════════════════════════
-       SCRIPTS
-  ════════════════════════════════════════════════ -->
   <script>
-  /* ─── NAVBAR: mostrar/ocultar menú móvil ─── */
   let menuVisible = false;
   function mostrarOcultarMenu() {
     if (menuVisible) {
@@ -1647,7 +1031,6 @@
     }
   }
 
-  /* ─── HEADER SCROLL SHADOW ─── */
   (function () {
     const header = document.getElementById('main-header');
     if (!header) return;
@@ -1656,55 +1039,50 @@
     }, { passive: true });
   })();
 
-  /* ─── BARRA DE PROGRESO DE LECTURA ─── */
   (function () {
     const fill = document.getElementById('docProgressFill');
     const bar  = document.getElementById('docProgressBar');
     if (!fill) return;
     window.addEventListener('scroll', function () {
-      const scrollTop  = window.scrollY || document.documentElement.scrollTop;
-      const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
-      const pct        = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
       fill.style.width = pct + '%';
       bar.setAttribute('aria-valuenow', Math.round(pct));
     }, { passive: true });
   })();
 
-  /* ─── TOC: expandir/colapsar capítulos ─── */
   (function () {
     document.querySelectorAll('.doc-toc-chapter > a').forEach(function (link) {
       link.addEventListener('click', function (e) {
         const chapter = this.closest('.doc-toc-chapter');
         const isOpen  = chapter.classList.contains('toc-open');
-        // Cerrar todos
         document.querySelectorAll('.doc-toc-chapter').forEach(function (c) {
           c.classList.remove('toc-open');
         });
-        // Abrir el clickeado si estaba cerrado
-        if (!isOpen) {
-          chapter.classList.add('toc-open');
-        }
+        if (!isOpen) chapter.classList.add('toc-open');
       });
     });
   })();
 
-  /* ─── TOC: activo al hacer scroll ─── */
   (function () {
-    const sections = document.querySelectorAll('.doc-chapter, .doc-body .doc-h2, h3[id], article[id]');
+    const anchors  = ['generalidades','introduccion','antecedentes','planteamiento',
+                      'arbol-problemas','formulacion','proposito','metodo','planificacion',
+                      'marco-teorico','modelo-ambiental','modelo-comportamiento',
+                      'sprint3-interaccion','modelo-objetos','casos-uso-oo','clases-oo'];
     const tocLinks = document.querySelectorAll('.doc-toc-section li a, .doc-toc-chapter > a');
 
     function onScroll() {
       let current = '';
-      sections.forEach(function (section) {
-        if (window.scrollY >= section.offsetTop - 120) {
-          current = section.getAttribute('id') || current;
-        }
+      anchors.forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 130) current = id;
       });
       tocLinks.forEach(function (link) {
         link.classList.remove('toc-active');
-        if (link.getAttribute('href') === '#' + current) {
+        const href = link.getAttribute('href');
+        if (href === '#' + current) {
           link.classList.add('toc-active');
-          // Abrir capítulo padre
           const chapter = link.closest('.doc-toc-chapter');
           if (chapter) {
             document.querySelectorAll('.doc-toc-chapter').forEach(function (c) {
@@ -1715,24 +1093,20 @@
         }
       });
     }
-
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
 
-  /* ─── SIDEBAR MOBILE TOGGLE ─── */
   (function () {
-    const btn      = document.getElementById('sidebarToggle');
-    const sidebar  = document.getElementById('docSidebar');
-    const icon     = document.getElementById('sidebarToggleIcon');
+    const btn     = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('docSidebar');
+    const icon    = document.getElementById('sidebarToggleIcon');
     if (!btn) return;
     btn.addEventListener('click', function () {
       sidebar.classList.toggle('collapsed');
       const isCollapsed = sidebar.classList.contains('collapsed');
       btn.setAttribute('aria-expanded', !isCollapsed);
-      icon.className = isCollapsed
-        ? 'fa-solid fa-chevron-down'
-        : 'fa-solid fa-chevron-up';
+      icon.className = isCollapsed ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-up';
       icon.style.fontSize = '0.7rem';
       icon.style.color    = 'var(--gold-400)';
     });
