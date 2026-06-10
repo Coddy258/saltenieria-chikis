@@ -14,13 +14,13 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <link rel="stylesheet" href="estilo.css">
-    
+
   <style>
     /* ══════════════════════════════════════════
        VIDEOS PAGE — estilos propios
     ══════════════════════════════════════════ */
 
-    /* ── Hero banner (mismo patrón que informe.html) ── */
+    /* ── Hero banner ── */
     .videos-hero {
       margin-top: 68px;
       position: relative;
@@ -113,7 +113,7 @@
       padding: 3rem 2rem 5rem;
     }
 
-    /* ── Eyebrow de sección ── */
+    /* ── Encabezado de sección ── */
     .videos-section-head {
       display: flex;
       align-items: center;
@@ -142,7 +142,120 @@
       white-space: nowrap;
     }
 
-    /* ── Grid de videos ── */
+    /* ══════════════════════════════════════════
+       VIDEO TUTORIAL — card destacada (ancho completo)
+    ══════════════════════════════════════════ */
+    .video-tutorial-card {
+      background: var(--dark-800);
+      border: 1px solid rgba(212,163,52,0.45);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 40px rgba(212,163,52,0.08);
+      transition: border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .video-tutorial-card:hover {
+      border-color: rgba(212,163,52,0.7);
+      box-shadow: 0 16px 56px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,163,52,0.15);
+    }
+
+    /* Cabecera especial del tutorial */
+    .video-tutorial-card__head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.9rem 1.4rem;
+      background: rgba(212,163,52,0.12);
+      border-bottom: 1px solid rgba(212,163,52,0.3);
+    }
+
+    .tutorial-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--gold-400);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark-900);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .video-tutorial-card__head-text {
+      flex: 1;
+    }
+
+    .video-tutorial-card__head-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .video-tutorial-card__head-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .tutorial-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark-900);
+      background: var(--gold-400);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      flex-shrink: 0;
+    }
+
+    /* Iframe del tutorial — 16:9 responsivo */
+    .video-tutorial-card__player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-tutorial-card__player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Descripción bajo el reproductor */
+    .video-tutorial-card__body {
+      padding: 1rem 1.4rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .video-tutorial-card__body i {
+      color: var(--gold-400);
+      font-size: 0.9rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .video-tutorial-card__desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ══════════════════════════════════════════
+       GRID DE VIDEOS EXPLICATIVOS
+    ══════════════════════════════════════════ */
     .videos-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -150,7 +263,7 @@
       margin-bottom: 3rem;
     }
 
-    /* ── Card de video ── */
+    /* Card de video */
     .video-card {
       background: var(--dark-800);
       border: 1px solid var(--border-gold);
@@ -198,22 +311,24 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold-400);
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
-    /* Contenedor del video */
+    /* Contenedor del iframe — 16:9 responsivo */
     .video-card__player {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: #0a0a08;
+      background: #000;
       overflow: hidden;
     }
 
-    .video-card__player video {
+    .video-card__player iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      border: none;
       display: block;
     }
 
@@ -262,15 +377,45 @@
       background: rgba(212,163,52,0.06);
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .videos-hero__content { padding: 2rem 1.5rem; }
-      .videos-page { padding: 2rem 1rem 4rem; }
-      .videos-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    /* ── Divisor entre secciones ── */
+    .videos-divider {
+      height: 1px;
+      background: linear-gradient(to right,
+        transparent,
+        rgba(212,163,52,0.2) 20%,
+        rgba(212,163,52,0.2) 80%,
+        transparent);
+      margin: 0 0 2.5rem;
     }
 
-    @media (max-width: 480px) {
-      .videos-grid { grid-template-columns: 1fr; }
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .videos-hero__content { padding: 2rem 1.5rem; }
+      .videos-page { padding: 2rem 1rem 4rem; }
+
+      .videos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .video-tutorial-card__head {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .tutorial-badge { display: none; }
+
+      .video-tutorial-card__body {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
   <link rel="stylesheet" href="nav-mobile-fix.css">
@@ -290,7 +435,6 @@
 
         <nav id="nav">
           <ul>
-
             <li>
               <a href="index.html" onclick="seleccionar()">
                 <i class="fa-solid fa-house"></i>
@@ -350,7 +494,6 @@
                 <span>Videos</span>
               </a>
             </li>
-
           </ul>
         </nav>
 
@@ -395,14 +538,53 @@
   ══════════════════════════════════════════ -->
   <main class="videos-page">
 
-    <!-- Encabezado de sección -->
+    <!-- ── VIDEO TUTORIAL (al principio, destacado) ── -->
+    <div class="videos-section-head">
+      <span class="videos-section-label">Tutorial del sitio web</span>
+      <div class="videos-section-line" aria-hidden="true"></div>
+      <span class="videos-section-count">Guía de navegación</span>
+    </div>
+
+    <div class="video-tutorial-card">
+      <div class="video-tutorial-card__head">
+        <div class="tutorial-icon">
+          <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+        </div>
+        <div class="video-tutorial-card__head-text">
+          <span class="video-tutorial-card__head-label">Empieza aquí</span>
+          <div class="video-tutorial-card__head-title">Tutorial: Guía completa del sitio web</div>
+        </div>
+        <span class="tutorial-badge">Ver primero</span>
+      </div>
+
+      <div class="video-tutorial-card__player">
+        <iframe
+          src="https://www.youtube.com/embed/9A6xAJBfU4U"
+          title="Tutorial completo del sitio web Salteñería Chikis"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="video-tutorial-card__body">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        <p class="video-tutorial-card__desc">
+          Este video explica cómo está organizado el sitio web: qué hay en cada página (Inicio, Menú, Informe y Videos), cómo navegar entre secciones y qué encontrarás en cada apartado. Se recomienda verlo antes de explorar el resto del material.
+        </p>
+      </div>
+    </div>
+
+    <!-- Divisor entre secciones -->
+    <div class="videos-divider" aria-hidden="true"></div>
+
+    <!-- ── VIDEOS EXPLICATIVOS ── -->
     <div class="videos-section-head">
       <span class="videos-section-label">Videos explicativos</span>
       <div class="videos-section-line" aria-hidden="true"></div>
       <span class="videos-section-count">4 videos · Proyecto Salteñería Chikis</span>
     </div>
 
-    <!-- Grid de cards -->
     <div class="videos-grid">
 
       <!-- Video 1 -->
@@ -412,10 +594,13 @@
           <span class="video-card__badge">Análisis Estructurado</span>
         </div>
         <div class="video-card__player">
-          <video controls preload="none">
-            <source src="videos/video1.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/kHgYaKIOmdc"
+            title="Video 1 — Modelo de Comportamiento"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
         <div class="video-card__body">
           <div class="video-card__title">Modelo de Comportamiento</div>
@@ -432,10 +617,13 @@
           <span class="video-card__badge">Modelo Ambiental</span>
         </div>
         <div class="video-card__player">
-          <video controls preload="none">
-            <source src="videos/video2.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/cdYcL3SnV-M"
+            title="Video 2 — Modelo Ambiental"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
         <div class="video-card__body">
           <div class="video-card__title">Modelo Ambiental</div>
@@ -452,10 +640,13 @@
           <span class="video-card__badge">Análisis OO</span>
         </div>
         <div class="video-card__player">
-          <video controls preload="none">
-            <source src="videos/video3.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/BylwK0LGIKU"
+            title="Video 3 — Diagrama de Casos de Uso"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
         <div class="video-card__body">
           <div class="video-card__title">Diagrama de Casos de Uso</div>
@@ -472,10 +663,13 @@
           <span class="video-card__badge">Análisis OO</span>
         </div>
         <div class="video-card__player">
-          <video controls preload="none">
-            <source src="videos/video 4.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/1j6iPAWR6Jg"
+            title="Video 4 — Diagrama de Clases"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
         <div class="video-card__body">
           <div class="video-card__title">Diagrama de Clases</div>
