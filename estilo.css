@@ -2891,3 +2891,140 @@ figcaption.cap3-figcaption strong { color: var(--oo-accent); font-style: normal;
     display: none;
   }
 }
+/* ══════════════════════════════════════════
+   INFORME — Bloque de autores del proyecto
+══════════════════════════════════════════ */
+.informe-autores {
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(212, 163, 52, 0.15);
+}
+
+.informe-autores__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.informe-autores__label i {
+  color: var(--gold-400);
+  font-size: 0.65rem;
+}
+
+.informe-autores__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.informe-autor-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 5px 14px 5px 6px;
+  background: rgba(212, 163, 52, 0.07);
+  border: 1px solid rgba(212, 163, 52, 0.22);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.informe-autor-chip:hover {
+  background: rgba(212, 163, 52, 0.12);
+  border-color: rgba(212, 163, 52, 0.4);
+  color: var(--text-primary);
+}
+
+.informe-autor-num {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--dark-900);
+  background: var(--gold-400);
+  padding: 1px 6px;
+  border-radius: 3px;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .informe-autores__grid {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .informe-autor-chip {
+    font-size: 0.72rem;
+  }
+}
+/* ══════════════════════════════════════════
+   HERO — CTA hacia el informe técnico
+══════════════════════════════════════════ */
+.hero-informe-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  padding: 0.7rem 1.3rem 0.7rem 0.75rem;
+  background: rgba(212, 163, 52, 0.07);
+  border: 1px solid rgba(212, 163, 52, 0.28);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeUp 0.8s 0.45s ease both;
+  max-width: 420px;
+}
+
+.hero-informe-cta:hover {
+  background: rgba(212, 163, 52, 0.13);
+  border-color: rgba(212, 163, 52, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 163, 52, 0.15);
+}
+
+.hero-informe-cta__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-900);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.hero-informe-cta:hover .hero-informe-cta__icon {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.hero-informe-cta__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.hero-informe-cta__text em {
+  font-style: normal;
+  color: var(--gold-400);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 760px) {
+  .hero-informe-cta {
+    max-width: 100%;
+  }
+}
